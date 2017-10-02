@@ -1,0 +1,535 @@
+/*
+*LOADING 2
+*/
+.bg-itube-default{
+     background-color: #25292C;
+     color: #fff;
+}
+.bg-itube-light{
+    background-color: #FFFFFF;
+}
+.bg-light{
+    background-color: #fff;
+    border-radius: 5px;
+    color: #000;
+}
+.show {
+    display: block;
+}
+.hide {
+    display: none;
+}
+.cssload-loader {
+    width: 244px;
+    height: 49px;
+    line-height: 49px;
+    text-align: center;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    font-family: helvetica, arial, sans-serif;
+    text-transform: uppercase;
+    font-weight: 900;
+    font-size: 18px;
+    color: rgb(206, 66, 51);
+    letter-spacing: 0.2em;
+    z-index: 10;
+   
+}
+
+.cssload-loader::before, .cssload-loader::after {
+    content: "";
+    display: block;
+    width: 15px;
+    height: 15px;
+    background: rgb(206, 66, 51);
+    position: absolute;
+    animation: cssload-load 0.81s infinite alternate ease-in-out;
+    -o-animation: cssload-load 0.81s infinite alternate ease-in-out;
+    -ms-animation: cssload-load 0.81s infinite alternate ease-in-out;
+    -webkit-animation: cssload-load 0.81s infinite alternate ease-in-out;
+    -moz-animation: cssload-load 0.81s infinite alternate ease-in-out;
+}
+
+.cssload-loader::before {
+    top: 0;
+}
+
+.cssload-loader::after {
+    bottom: 0;
+}
+
+@keyframes cssload-load {
+    0% {
+        left: 0;
+        height: 29px;
+        width: 15px;
+    }
+    50% {
+        height: 8px;
+        width: 39px;
+    }
+    100% {
+        left: 229px;
+        height: 29px;
+        width: 15px;
+    }
+}
+
+@-o-keyframes cssload-load {
+    0% {
+        left: 0;
+        height: 29px;
+        width: 15px;
+    }
+    50% {
+        height: 8px;
+        width: 39px;
+    }
+    100% {
+        left: 229px;
+        height: 29px;
+        width: 15px;
+    }
+}
+
+@-ms-keyframes cssload-load {
+    0% {
+        left: 0;
+        height: 29px;
+        width: 15px;
+    }
+    50% {
+        height: 8px;
+        width: 39px;
+    }
+    100% {
+        left: 229px;
+        height: 29px;
+        width: 15px;
+    }
+}
+
+@-webkit-keyframes cssload-load {
+    0% {
+        left: 0;
+        height: 29px;
+        width: 15px;
+    }
+    50% {
+        height: 8px;
+        width: 39px;
+    }
+    100% {
+        left: 229px;
+        height: 29px;
+        width: 15px;
+    }
+}
+
+@-moz-keyframes cssload-load {
+    0% {
+        left: 0;
+        height: 29px;
+        width: 15px;
+    }
+    50% {
+        height: 8px;
+        width: 39px;
+    }
+    100% {
+        left: 229px;
+        height: 29px;
+        width: 15px;
+    }
+}
+
+
+/*
+* CSS loader 3
+*/
+
+#floatingBarsG{
+    position:relative;
+    width:186px;
+    height:231px;
+    margin:auto;
+}
+
+.blockG{
+    position:absolute;
+    background-color:rgb(255,255,255);
+    width:30px;
+    height:72px;
+    border-radius:24px 24px 0 0;
+        -o-border-radius:24px 24px 0 0;
+        -ms-border-radius:24px 24px 0 0;
+        -webkit-border-radius:24px 24px 0 0;
+        -moz-border-radius:24px 24px 0 0;
+    transform:scale(0.4);
+        -o-transform:scale(0.4);
+        -ms-transform:scale(0.4);
+        -webkit-transform:scale(0.4);
+        -moz-transform:scale(0.4);
+    animation-name:fadeG;
+        -o-animation-name:fadeG;
+        -ms-animation-name:fadeG;
+        -webkit-animation-name:fadeG;
+        -moz-animation-name:fadeG;
+    animation-duration:0.622s;
+        -o-animation-duration:0.622s;
+        -ms-animation-duration:0.622s;
+        -webkit-animation-duration:0.622s;
+        -moz-animation-duration:0.622s;
+    animation-iteration-count:infinite;
+        -o-animation-iteration-count:infinite;
+        -ms-animation-iteration-count:infinite;
+        -webkit-animation-iteration-count:infinite;
+        -moz-animation-iteration-count:infinite;
+    animation-direction:normal;
+        -o-animation-direction:normal;
+        -ms-animation-direction:normal;
+        -webkit-animation-direction:normal;
+        -moz-animation-direction:normal;
+}
+
+#rotateG_01{
+    left:0;
+    top:84px;
+    animation-delay:0.2295s;
+        -o-animation-delay:0.2295s;
+        -ms-animation-delay:0.2295s;
+        -webkit-animation-delay:0.2295s;
+        -moz-animation-delay:0.2295s;
+    transform:rotate(-90deg);
+        -o-transform:rotate(-90deg);
+        -ms-transform:rotate(-90deg);
+        -webkit-transform:rotate(-90deg);
+        -moz-transform:rotate(-90deg);
+}
+
+#rotateG_02{
+    left:24px;
+    top:30px;
+    animation-delay:0.316s;
+        -o-animation-delay:0.316s;
+        -ms-animation-delay:0.316s;
+        -webkit-animation-delay:0.316s;
+        -moz-animation-delay:0.316s;
+    transform:rotate(-45deg);
+        -o-transform:rotate(-45deg);
+        -ms-transform:rotate(-45deg);
+        -webkit-transform:rotate(-45deg);
+        -moz-transform:rotate(-45deg);
+}
+
+#rotateG_03{
+    left:78px;
+    top:9px;
+    animation-delay:0.3925s;
+        -o-animation-delay:0.3925s;
+        -ms-animation-delay:0.3925s;
+        -webkit-animation-delay:0.3925s;
+        -moz-animation-delay:0.3925s;
+    transform:rotate(0deg);
+        -o-transform:rotate(0deg);
+        -ms-transform:rotate(0deg);
+        -webkit-transform:rotate(0deg);
+        -moz-transform:rotate(0deg);
+}
+
+#rotateG_04{
+    right:24px;
+    top:30px;
+    animation-delay:0.469s;
+        -o-animation-delay:0.469s;
+        -ms-animation-delay:0.469s;
+        -webkit-animation-delay:0.469s;
+        -moz-animation-delay:0.469s;
+    transform:rotate(45deg);
+        -o-transform:rotate(45deg);
+        -ms-transform:rotate(45deg);
+        -webkit-transform:rotate(45deg);
+        -moz-transform:rotate(45deg);
+}
+
+#rotateG_05{
+    right:0;
+    top:84px;
+    animation-delay:0.5455s;
+        -o-animation-delay:0.5455s;
+        -ms-animation-delay:0.5455s;
+        -webkit-animation-delay:0.5455s;
+        -moz-animation-delay:0.5455s;
+    transform:rotate(90deg);
+        -o-transform:rotate(90deg);
+        -ms-transform:rotate(90deg);
+        -webkit-transform:rotate(90deg);
+        -moz-transform:rotate(90deg);
+}
+
+#rotateG_06{
+    right:24px;
+    bottom:21px;
+    animation-delay:0.622s;
+        -o-animation-delay:0.622s;
+        -ms-animation-delay:0.622s;
+        -webkit-animation-delay:0.622s;
+        -moz-animation-delay:0.622s;
+    transform:rotate(135deg);
+        -o-transform:rotate(135deg);
+        -ms-transform:rotate(135deg);
+        -webkit-transform:rotate(135deg);
+        -moz-transform:rotate(135deg);
+}
+
+#rotateG_07{
+    bottom:0;
+    left:78px;
+    animation-delay:0.6985s;
+        -o-animation-delay:0.6985s;
+        -ms-animation-delay:0.6985s;
+        -webkit-animation-delay:0.6985s;
+        -moz-animation-delay:0.6985s;
+    transform:rotate(180deg);
+        -o-transform:rotate(180deg);
+        -ms-transform:rotate(180deg);
+        -webkit-transform:rotate(180deg);
+        -moz-transform:rotate(180deg);
+}
+
+#rotateG_08{
+    left:24px;
+    bottom:21px;
+    animation-delay:0.775s;
+        -o-animation-delay:0.775s;
+        -ms-animation-delay:0.775s;
+        -webkit-animation-delay:0.775s;
+        -moz-animation-delay:0.775s;
+    transform:rotate(-135deg);
+        -o-transform:rotate(-135deg);
+        -ms-transform:rotate(-135deg);
+        -webkit-transform:rotate(-135deg);
+        -moz-transform:rotate(-135deg);
+}
+
+
+
+@keyframes fadeG{
+    0%{
+        background-color:rgb(0,0,0);
+    }
+
+    100%{
+        background-color:rgb(255,255,255);
+    }
+}
+
+@-o-keyframes fadeG{
+    0%{
+        background-color:rgb(0,0,0);
+    }
+
+    100%{
+        background-color:rgb(255,255,255);
+    }
+}
+
+@-ms-keyframes fadeG{
+    0%{
+        background-color:rgb(0,0,0);
+    }
+
+    100%{
+        background-color:rgb(255,255,255);
+    }
+}
+
+@-webkit-keyframes fadeG{
+    0%{
+        background-color:rgb(0,0,0);
+    }
+
+    100%{
+        background-color:rgb(255,255,255);
+    }
+}
+
+@-moz-keyframes fadeG{
+    0%{
+        background-color:rgb(0,0,0);
+    }
+
+    100%{
+        background-color:rgb(255,255,255);
+    }
+}
+
+
+/*
+* Nút play thumbnail
+*/
+
+.thumbnail-btn-play {
+    opacity: 0.9;
+    position: absolute;
+    top: 30%;
+    left: 45%;
+    z-index: 20;
+    padding: 5px;
+    cursor: pointer;
+    /* width: 0;
+    height: 0;*/
+    padding: 0;
+    border-top: 30px solid transparent;
+    border-left: 40px solid #FFFFFF;
+    border-bottom: 30px solid transparent;
+}
+
+.thumbnail-btn-play:hover {
+    width: 0;
+    height: 0;
+    border-left: 40px solid #D90202;
+}
+
+.thumbnail-pre-img {
+    height: 90%;
+    width: 100%;
+    display: block;
+}
+.thumbnail a{
+    cursor:pointer;
+    text-decoration: none;
+    color: #fff;
+    font-weight: bold;
+}
+/*
+*Thumbnail video modal
+*/
+
+.no-border {
+    border: none;
+}
+
+.videos {
+    background-color: #322E2E;
+}
+
+.cation-wrap {
+    display: inline-block;
+    position: relative;
+    top: 0;
+}
+
+.caption {
+    position: relative;
+    display: block;
+    height: 70px;
+    color: #fff;
+    background-color: #0E0E0E;
+    overflow-y: hidden;
+}
+
+.caption span {
+    display: flex;
+    word-wrap: break-word;
+    /*word-break: break-all;  */
+    color: #ffffff;
+    cursor: pointer;
+}
+
+
+/*
+* Custom csssssss
+*/
+
+.card-body-custom {
+    height: 4rem;
+    overflow-y: hidden;
+    padding: .5em;
+}
+
+.carousel-caption-custom {}
+
+.carousel-item img:first-child {
+    max-height: 350px;
+    width: 100%;
+}
+
+#navbar-top {
+    transition: 0.4s;
+}
+
+.hidden {
+    visibility: hidden;
+}
+
+.visible {
+    visibility: visible;
+}
+
+.itube-rules {
+    height: 100%;
+    /*overflow: unset;   */
+    scroll-behavior: smooth;
+}
+
+.itube-bg-black {
+    background-color: #141414;
+    color: #fff;
+}
+
+.itube-bg-default {
+    background: #fff;
+    color: #000;
+}
+#alert{
+    text-align: center;
+}
+
+/*.mobile-scroll-ver{
+    top:-80px;
+    position: absolute;
+}*/
+
+@media only screen and (max-width: 767px) {
+    [class*="col-"] {
+        /*padding: 0;*/
+    }
+    #main {
+        margin-top: 45px;
+    }
+    #video-trending {}
+    #menu {
+        display: none;
+    }
+    #video-list {
+        padding-top: 50px;
+    }
+    #page-header {
+        padding-top: 60px;
+    }
+}
+
+
+/*For tablet, smartphone*/
+
+@media only screen and (max-width: 768px) {
+    .mobile-scroll-ver {
+        top: -50%;
+        transition: 1s;
+    }
+}
+
+
+/*For lage screen screen: laptop, pc, tv*/
+
+@media only screen and (min-width: 768px) {
+    .desktop-scroll-ver {
+        top: -80px;
+    }
+}
