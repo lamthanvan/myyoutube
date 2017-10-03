@@ -5,15 +5,10 @@
             <title>
                 itube
             </title>
-            <link href="./css/bootstrap.min.css" rel="stylesheet"/>
-            <link href="./css/customize.css" rel="stylesheet"/>
-            <link href="./css/slider.css" rel="stylesheet"/>
-            <script data-cfasync="false">
-                (function(r,e,E,m,b){E[r]=E[r]||{};E[r][b]=E[r][b]||function(){
-  (E[r].q=E[r].q||[]).push(arguments)};b=m.getElementsByTagName(e)[0];m=m.createElement(e);
-  m.async=1;m.src=("file:"==location.protocol?"https:":"")+"//s.reembed.com/G-ndLM8n.js";
-  b.parentNode.insertBefore(m,b)})("reEmbed","script",window,document,"api");
-            </script>
+            <link href="../assets/css/bootstrap.min.css" rel="stylesheet"/>
+            <link href="../assets/css/customize.css" rel="stylesheet"/>
+            <link href="../assets/owl-slider/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet"/>
+            <link href="../assets/owl-slider/owlcarousel/assets/owl.theme.green.min.css" rel="stylesheet"/>
         </meta>
     </head>
     <body class="bg-itube-default" ng-app="itube">
@@ -54,7 +49,7 @@
                 <div class="col-md-10 col-xs-12 p-4">
                     <div class="row ">
                         <span>
-                            Category:
+                            Category:d
                             <a href="">
                                 {{videoInfo.category}}
                             </a>
@@ -82,7 +77,7 @@
                         <span>
                             Tags:
                         </span>
-                        <div class="text-light" ng-repeat="tag in tags" on-finish-render="ngSliceString">
+                        <div class="text-light" ng-repeat="tag in tags">
                             <a ng-href="search.html?search=video&keyword={{tag}}">
                                 {{tag}}
                             </a>
@@ -91,114 +86,80 @@
                     </div>
                     <!-- Play list//sugest -->
                     <div class="row">
-                        <div class="container">
-                            <div class="row">
-                                <h2>
-                                    Media Slider Carousel BS3
-                                </h2>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-8">
-                                    <div class="carousel slide media-carousel" id="media">
-                                        <div class="carousel-inner">
-                                            <div class="item active">
-                                                <div class="row">
-                                                    <div class="col-md-4">
-                                                        <a class="thumbnail" href="#">
-                                                            <img alt="" src="http://placehold.it/150x150?text=First"/>
-                                                        </a>
-                                                    </div>
-                                                    <div class="col-md-4">
-                                                        <a class="thumbnail" href="#">
-                                                            <img alt="" src="http://placehold.it/150x150"/>
-                                                        </a>
-                                                    </div>
-                                                    <div class="col-md-4">
-                                                        <a class="thumbnail" href="#">
-                                                            <img alt="" src="http://placehold.it/150x150"/>
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="item">
-                                                <div class="row">
-                                                    <div class="col-md-4">
-                                                        <a class="thumbnail" href="#">
-                                                            <img alt="" src="http://placehold.it/150x150"/>
-                                                        </a>
-                                                    </div>
-                                                    <div class="col-md-4">
-                                                        <a class="thumbnail" href="#">
-                                                            <img alt="" src="http://placehold.it/150x150"/>
-                                                        </a>
-                                                    </div>
-                                                    <div class="col-md-4">
-                                                        <a class="thumbnail" href="#">
-                                                            <img alt="" src="http://placehold.it/150x150"/>
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="item">
-                                                <div class="row">
-                                                    <div class="col-md-4">
-                                                        <a class="thumbnail" href="#">
-                                                            <img alt="" src="http://placehold.it/150x150"/>
-                                                        </a>
-                                                    </div>
-                                                    <div class="col-md-4">
-                                                        <a class="thumbnail" href="#">
-                                                            <img alt="" src="http://placehold.it/150x150"/>
-                                                        </a>
-                                                    </div>
-                                                    <div class="col-md-4">
-                                                        <a class="thumbnail" href="#">
-                                                            <img alt="" src="http://placehold.it/150x150?text=final"/>
-                                                        </a>
-                                                    </div>
-                                                </div>
+                        <div class="row m-0">
+                            <span>
+                                Có thể bạn thích
+                            </span>
+                        </div>
+                        <!-- fav slider -->
+                        <div class="owl-carousel owl-theme owl-loaded owl-container">
+                            <div class="owl-stage-outer ">
+                                <div class="owl-stage" ng-controller="videosCtrl">
+                                    <div class="owl-item video-item-info" ng-repeat="video in videos" on-finish-render="ngRepeatFinish">
+                                        <div class="thumbnail">
+                                            <img alt="Preview image" class="owl-preview-img" data-holder-rendered="true" ng-src="https://i.ytimg.com/vi/{{video.videoId}}/hqdefault.jpg">
+                                            </img>
+                                            <a class="thumbnail-btn-play" ng-href="./watch.html?v={{video.videoId}}">
+                                            </a>
+                                            <div class="owl-video-name">
+                                                <a  ng-href="./watch.html?v={{video.videoId}}">
+                                                    {{video.name}}
+                                                </a>
                                             </div>
                                         </div>
-                                        <a class="left carousel-control" data-slide="prev" href="#media">
-                                            ‹
-                                        </a>
-                                        <a class="right carousel-control" data-slide="next" href="#media">
-                                            ›
-                                        </a>
                                     </div>
                                 </div>
                             </div>
+                            <!--  <div class="owl-controls">
+                                <div class="owl-nav">
+                                    <div class="owl-prev">
+                                        prev
+                                    </div>
+                                    <div class="owl-next">
+                                        next
+                                    </div>
+                                </div>
+                            </div> -->
                         </div>
                     </div>
                 </div>
             </div>
             <div class="row">
-                footer
+                <!-- footer -->
             </div>
         </div>
-        <script src="./js/jquery-3.2.1.min.js" type="text/javascript">
+        <script src="../assets/js/jquery-3.2.1.min.js" type="text/javascript">
         </script>
-        <script src="./js/popper.js" type="text/javascript">
+        <script src="../assets/js/popper.js" type="text/javascript">
         </script>
-        <script src="./js/bootstrap.min.js" type="text/javascript">
+        <script src="../assets/js/bootstrap.min.js" type="text/javascript">
         </script>
-        <script src="./angular/angular.min.js" type="text/javascript">
+        <script src="../assets/angular/angular.min.js" type="text/javascript">
         </script>
-        <script src="../m/ytAPI.js" type="text/javascript">
+        <script src="../assets/angular/angular-loader.js" type="text/javascript">
         </script>
-        <script src="../m/itube.js" type="text/javascript">
+        <script src="../assets/owl-slider/owlcarousel/owl.carousel.min.js">
         </script>
-        <script src="../c/itubeCtrl.js" type="text/javascript">
+        <script src="../assets/owl-slider/vendors/jquery.mousewheel.min.js">
         </script>
-        <script src="./js/player.js" type="text/javascript">
+        <script src="../../m/ytAPI.js" type="text/javascript">
+        </script>
+        <script src="../../m/itube.js" type="text/javascript">
+        </script>
+        <script src="../../c/itubeCtrl.js" type="text/javascript">
+        </script>
+        <script data-cfasync="false">
+            (function(r,e,E,m,b){E[r]=E[r]||{};E[r][b]=E[r][b]||function(){
+              (E[r].q=E[r].q||[]).push(arguments)};b=m.getElementsByTagName(e)[0];m=m.createElement(e);
+              m.async=1;m.src=("file:"==location.protocol?"https:":"")+"//s.reembed.com/G-ndLM8n.js";
+              b.parentNode.insertBefore(m,b)})("reEmbed","script",window,document,"api");
+        </script>
+        <script src="../assets/js/player.js" type="text/javascript">
         </script>
         <script>
-            $(document).ready(function() {
-              $('#media').carousel({
-                pause: true,
-                interval: 1000,
-              });
-            });
+            $(document).ready(function(){        
+               
+             });
         </script>
     </body>
 </html>
