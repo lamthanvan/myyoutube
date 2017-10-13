@@ -1,0 +1,133 @@
+<div class="col-md-12 col-lg-12">
+    <h4 class="card-title">
+        Upload video
+    </h4>
+    <form class="form-control bg-itube-default no-border" ng-controller="uploadVideoCtrl" ng-init="videoToUpload">
+        <div class="fixed">
+            <div class="alert alert-success " id="alert-success" style="display: none">
+            </div>
+            <div class="alert alert-danger" id="alert-error" style="display: none">
+            </div>
+            <div class="alert alert-warning" id="alert-warning" style="display: none">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="form-control-label col-md-3" for="video-link">
+                Youtube link
+            </label>
+            <div class="col-md-8">
+                <div class="input-group">
+                    <input aria-describedby="linkHelp" class="form-control" id="video-link" name="video-link" ng-model="videoURL" placeholder="Link video from youtube." required="" type="text">
+                        <span class="input-group-btn ">
+                            <button class="btn btn-primary" id="btn-check-link" type="button" ng-click="getLink()">
+                                Check!
+                            </button>
+                        </span>
+                    </input>
+                </div>
+                <small class="form-text text-muted" id="linkHelp">
+                    Example: https://www.youtube.com/watch?v=lvwn18VLAR8
+                </small>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="form-control-label col-md-3" for="video-name">
+                Name
+            </label>
+            <div class="col-md-8">
+                <input class="form-control" id="video-name" name="video-name" placeholder="Enter a name for your video." required="" type="text" ng-model="videoToUpload.name"/>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="form-control-label col-md-3" for="video-description">
+                Description
+            </label>
+            <div class="col-md-8">
+                <textarea class="form-control" id="video-description" name="video-description" placeholder="Descript your video." rows="8" ng-model="videoToUpload.description">
+                </textarea>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="form-control-label col-md-3" for="video-keywords">
+                Tags
+            </label>
+            <div class="col-md-8">
+                <input class="form-control" id="video-tags" name="video-tags" placeholder="Enter some tags for your video." type="text" ng-model="videoToUpload.keywords"/>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="form-control-label col-md-3" for="video-category">
+                Category
+            </label>
+            <div class="col-md-8">
+                <label class="checkbox-inline" id="video-category">
+                    <input name="video-category" type="checkbox" value="music">
+                        Music
+                    </input>
+                </label>
+                <label class="checkbox-inline">
+                    <input name="video-category" type="checkbox" value="movie">
+                        Movie
+                    </input>
+                </label>
+                <label class="checkbox-inline">
+                    <input name="video-categor" type="checkbox" value="cartoon" y="" >
+                        Cartoon
+                    </input>
+                </label>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="form-control-label col-md-3" for="video-keywords">
+               Playlist
+            </label>
+            <div class="col-md-8">
+                <select name="">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    
+                </select>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="form-control-label col-md-3" for="video-status">
+                Status
+            </label>
+            <div class="col-md-8" id="video-status">
+                <label class="radio-inline">
+                    <input name="video-status" type="checkbox">
+                        Active
+                    </input>
+                </label>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="control-label col-md-3">
+            </label>
+            <div class="col-md-8">
+                <button class="btn btn-primary" id="btn-submit">
+                    Submit
+                </button>
+                <button class="btn btn-default" type="reset">
+                    Reset
+                </button>
+            </div>
+        </div>
+    </form>
+</div>
+<script src="../m/ytAPI.js" type="text/javascript">
+</script>
+<!-- <script>
+    console.log('login need');
+     // if (typeof(Storage) !== "undefined") {
+     //        $scope.tokenKey = localStorage.getItem("tokenKey");
+     //        if ($scope.tokenKey === null) {
+     //            alert('Bạn cần đăng nhập để thực hiện thao tác này');
+     //            $window.location.href = 'index.html'
+     //        }
+     //    } else {
+     //        alert("Sorry, your browser does not support Web Storage...");
+     //    }
+</script> -->

@@ -1,0 +1,25 @@
+<div aria-labelledby="v-pills-home" id="v-pills-home" role="tabpanel">
+    <!-- content row -->
+    <div class="row" id="page-content" ng-controller="videosCtrl" ng-init="init()">
+        <div class="col-md-4 col-lg-4 pr-3 pl-3 pb-3" name="video-block" ng-repeat="video in videos track by $index">
+            <div class="thumbnail" ng-if="video">
+                <img alt="Preview image" class="card-img-top thumbnail-pre-img" data-holder-rendered="true" ng-src="https://i.ytimg.com/vi/{{video.videoId | limitTo:11}}/hqdefault.jpg">
+                    <a class="thumbnail-btn-play" ng-href="./watch.html?v={{video.videoId}}">
+                    </a>
+                    <a class="video-name" ng-href="./watch.html?v={{video.videoId}}">
+                        {{video.name}}
+                    </a>
+                </img>
+            </div>
+            <div class="row bottom-bot" ng-show="isLogined">
+                <a class="btn btn-danger" ng-confirm-click="Are you sure to delete this record ?" confirmed-click="deleteVideo(video.videoId)">
+                    Xóa
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <ul class="pagination-sm" id="pagination">
+        </ul>
+    </div>
+</div>
