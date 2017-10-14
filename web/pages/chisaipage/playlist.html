@@ -1,10 +1,10 @@
 <div ng-controller="playlistCtrl" ng-init="init()">
     <div class="pll-switch-tab">
         <nav class="nav nav-tabs" id="playlistTab" role="tablist">
-            <a class="nav-item nav-link" ng-class="{'active': tabName==='playlist'}" ng-click="switchTab('playlist')">
+            <a class="nav-item nav-link" ng-class="{'active': tabName ==='playlist'}" ng-click="switchTab('playlist')">
                 Playlist
             </a>
-            <a class="nav-item nav-link" ng-class="{'active': tabName==='new-playlist'}" ng-click="switchTab('new-playlist')">
+            <a class="nav-item nav-link" ng-class="{'active': tabName ==='new-playlist'}" ng-click="switchTab('new-playlist')">
                 New playlist
             </a>
         </nav>
@@ -52,7 +52,7 @@
                         {{playlist.id}}
                     </div>
                     <div class="playlist-body p-3">
-                        <img alt="..." src="{{playlist.attributes.thumbnailUrl}}" class="img-thumbnail">
+                        <img alt="..." class="img-thumbnail" src="{{playlist.attributes.thumbnailUrl}}">
                             <h5 class="card-title">
                                 {{playlist.attributes.name}}
                             </h5>
@@ -156,7 +156,7 @@
                 </div>
             </div>
         </div>
-    </div>  
+    </div>
 </div>
 <script>
     if (typeof(Storage) !== "undefined") {

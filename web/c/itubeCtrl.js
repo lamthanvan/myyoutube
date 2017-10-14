@@ -10,7 +10,7 @@ var API_KEY = 'AIzaSyARBKW7hWfmEYm7tswDHUsp68hUsfvgjbM';
 var videoId = getParameterByName("v");
 var VIDEO_INFO_API_URL = "https://youtube-api-challenger2.appspot.com/videos/";
 var YT_CHECK_URL;
-var PLAYLIST_API_URL;
+var PLAYLIST_API_URL = "https://youtube-api-challenger2.appspot.com/playlists";
 app.controller('videosCtrl', function($scope, $http) {
     // $http.get(VIDEO_API_URL).then(function(response) {
     //     $scope.videos = response.data;
@@ -27,6 +27,7 @@ app.controller('videosCtrl', function($scope, $http) {
             url: VIDEO_API_URL
         }).then(function successCallback(response, status, xhr) {
             $scope.videos = response.data;
+            console.log($scope.videos)
         }, function errorCallback(response) {
             console.log(resp);
             // alert(resp.errors[0].title + '! ' + resp.errors[0].detail);
@@ -255,14 +256,14 @@ app.controller('uploadVideoCtrl', function($scope, $http) {
     $scope.nullPl = {
         type: "playlist",
         id: "0",
-        attributes: {
-            name: "Không thuộc playlist"
+        "attributes": {
+            "name": "Không thuộc playlist"
         }
     };
     $scope.videoToUpload = {
-        data: {
-            type: "video",
-            attributes: {
+        "data": {
+            "type": "video",
+            "attributes": {
                 "youtubeId": "",
                 "name": "",
                 "description": "",
@@ -273,7 +274,7 @@ app.controller('uploadVideoCtrl', function($scope, $http) {
         }
     };
     $scope.init = function() {
-        // $scope.getPlaylistModel();
+        $scope.getPlaylistModel();
     }
     $scope.getPlaylistModel = function() {
         $http({
@@ -296,6 +297,7 @@ app.controller('uploadVideoCtrl', function($scope, $http) {
         }, function errorCallback(response) {});
     }
     $scope.doSubmit = function() {
+        console.log($scope.videoToUpload);
         $http({
             method: 'POST',
             headers: {
@@ -355,9 +357,10 @@ app.controller('uploadVideoCtrl', function($scope, $http) {
             //console.log(response.data)
             var video = response.data.items[0].snippet;
             console.log(video)
+
             $scope.videoToUpload.name = video.title;
             $scope.videoToUpload.description = video.description;
-            $scope.videoToUpload.keywords = video.tags;
+            // $scope.videoToUpload.keywords = JSON.stringify(video.tags);
         }, function errorCallback(response) {
             $('#alert-error').text('Video không tồn tại!');
             $('#alert-error').show();
