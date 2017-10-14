@@ -2,21 +2,23 @@ var page, limit;
 page = getParameterByName("page");
 limit = getParameterByName("limit");
 // console.log(page+' | '+limit);
+var MEMBER_API_URL = "https://youtube-api-challenger2.appspot.com/members";
+var MEMBER_AUTH_URL = "https://youtube-api-challenger2.appspot.com/authentication";
 var VIDEO_API_URL_VER1 = 'https://youtube-video-api-1608.appspot.com/youtube/api';
 var VIDEO_API_URL = "https://youtube-api-challenger2.appspot.com/videos";
 var API_KEY = 'AIzaSyARBKW7hWfmEYm7tswDHUsp68hUsfvgjbM';
 var videoId = getParameterByName("v");
-var VIDEO_INFO_API_URL = "https://youtube-video-api-1608.appspot.com/youtube/api?id=" + videoId;
-var YT_CHECK_URL = 'https://www.googleapis.com/youtube/v3/videos?id=' + videoId + '&key=' + API_KEY + '&fields=items&part=snippet,statistics';
-var PLAYLIST_API_URL = "https://youtube-api-challenger2.appspot.com/playlists";
+var VIDEO_INFO_API_URL = "https://youtube-api-challenger2.appspot.com/videos/";
+var YT_CHECK_URL;
+var PLAYLIST_API_URL;
 app.controller('videosCtrl', function($scope, $http) {
     // $http.get(VIDEO_API_URL).then(function(response) {
     //     $scope.videos = response.data;
     // });
-    $scope.init = function(){
+    $scope.init = function() {
         $scope.getListVideoService();
     }
-    $scope.getListVideoService = function(){
+    $scope.getListVideoService = function() {
         $http({
             headers: {
                 "Content-Type": "application/json",
@@ -245,23 +247,170 @@ app.controller('playlistCtrl', function playlistCtrl($scope, $http, $window) {
         return false;
     }
 });
-app.controller('uploadVideoCtrl', function($scope) {
-    var d = new Date();
-    var videoBOD = formatDate(d);
-    $scope.videoURL = "";
+app.controller('uploadVideoCtrl', function($scope, $http) {
+    $scope.ytURL = "";
+    $scope.playlistsModel = {};
+    $scope.playlist;
+    $scope.ytId;
+    $scope.nullPl = {
+        type: "playlist",
+        id: "0",
+        attributes: {
+            name: "Không thuộc playlist"
+        }
+    };
     $scope.videoToUpload = {
-        videoId: "",
-        name: "",
-        description: "",
-        keywords: "",
-        category: "",
-        genre: "",
-        authorName: "lamtv",
-        authorEmail: "lamtvd00516@fpt.edu.vn",
-        birthday: videoBOD
+        data: {
+            type: "video",
+            attributes: {
+                "youtubeId": "",
+                "name": "",
+                "description": "",
+                "keywords": "",
+                "playlistId": "",
+                "thumbnail": ""
+            }
+        }
+    };
+    $scope.init = function() {
+        // $scope.getPlaylistModel();
     }
-    $scope.getLink = function() {
-        alert($scope.videoURL)
+    $scope.getPlaylistModel = function() {
+        $http({
+            method: 'GET',
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": localStorage.getItem("tokenKey")
+            },
+            url: PLAYLIST_API_URL + '?page=1&limit=100'
+        }).then(function successCallback(response) {
+            if (response === '{}') {
+                // alert('Chưa có playlist!');
+                template: "chua co pll"
+            }
+            else {
+                $scope.playlistsModel = response.data.data
+                $scope.playlistsModel.unshift($scope.nullPl)
+                // console.log($scope.playlistsModel)
+            }
+        }, function errorCallback(response) {});
+    }
+    $scope.doSubmit = function() {
+        $http({
+            method: 'POST',
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": localStorage.getItem("tokenKey")
+            },
+            url: VIDEO_API_URL,
+            data: $scope.videoToUpload
+        }).then(function successCallback(response) {
+            $('#alert-success').text('Success');
+            $('#alert-success').show();
+            $('#alert-error').hide();
+        }, function errorCallback(response) {
+            var resp = response.data;
+            $('#alert-error').text(resp.errors[0].title + '! ' + resp.errors[0].detail);
+            $('#alert-error').show();
+            $('#alert-success').hide();
+        }, function errorCallback(response) {});
+    }
+    //get data from youtube data api
+    $scope.getYTData = function() {
+        if (isValidURL($scope.ytURL)) {
+            // console.log('valid url')
+            var url = new URL($scope.ytURL);
+            $scope.ytId = getParameterByName("v", url);
+            $scope.isExitsURL = 'https://www.googleapis.com/youtube/v3/videos?part=id&id=' + $scope.ytId + '&key=' + API_KEY;
+            $http({
+                url: $scope.isExitsURL,
+                type: 'GET'
+            }).then(function successCallback(response) {
+                // console.log(response.data.pageInfo.totalResults)
+                if (response.data.pageInfo.totalResults === 1) {
+                    $scope.ytApiGetVideo();
+                } else {
+                    // console.log('khong ton tai')
+                }
+            }, function errorCallback(response) {
+                console.log('nhay vao error');
+            });
+        }
+    }
+    //call youtube data api
+    $scope.ytApiGetVideo = function() {
+        var alertWarning = $('#alert-warning');
+        var alertError = $('#alert-error');
+        var alertSuccess = $('#alert-success');
+        YT_API_URL = 'https://www.googleapis.com/youtube/v3/videos?id=' + $scope.ytId + '&key=' + API_KEY + '&fields=items&part=snippet,statistics';
+        console.log(YT_API_URL);
+        video = null;
+        $http({
+            url: YT_API_URL,
+            type: 'GET'
+        }).then(function successCallback(response) {
+            $('#alert-success').text('Success');
+            $('#alert-success').show();
+            $('#alert-error').hide();
+            //console.log(response.data)
+            var video = response.data.items[0].snippet;
+            console.log(video)
+            $scope.videoToUpload.name = video.title;
+            $scope.videoToUpload.description = video.description;
+            $scope.videoToUpload.keywords = video.tags;
+        }, function errorCallback(response) {
+            $('#alert-error').text('Video không tồn tại!');
+            $('#alert-error').show();
+            $('#alert-success').hide();
+        }, function errorCallback(response) {});
+    }
+
+    function addVideo() {
+        var alertWarning = $('#alert-warning');
+        var alertError = $('#alert-error');
+        var alertSuccess = $('#alert-success');
+        var d = new Date();
+        var videoBOD = formatDate(d);
+        var lstCategory = "";
+        for (var i = 0, len = category.length; i < len; i++) {
+            if (category[i].checked) {
+                lstCategory += category[i].value + ',';
+            }
+        }
+        lstCategory = lstCategory.substring(0, lstCategory.length - 1);
+        // console.log(lstCategory);
+        // console.log(video);
+        // console.log(apiUrl);
+        var videoUpload = {
+            videoId: videoId,
+            name: name,
+            description: description,
+            keywords: tags,
+            category: lstCategory,
+            genre: genre,
+            authorName: "lamtv",
+            authorEmail: "lamtvd00516@fpt.edu.vn",
+            birthday: videoBOD
+        };
+        //console.log(video);
+        $.ajax({
+            url: UPLOAD_VIDEO_URL,
+            // contentType: 'application/json; charset=UTF-8',
+            data: JSON.stringify(videoUpload),
+            type: 'POST',
+            success: function(status, xhr) {
+                alertError.hide();
+                alertWarning.hide();
+                alertSuccess.html('<strong>Thành công!</strong> Tải lên thành công video.')
+                alertSuccess.show();
+            },
+            error: function(status, xhr) {
+                alertError.html('<strong>Lỗi!</strong> lỗi bất thường xảy ra, thử lại. code: ' + xhr.status);
+                alertError.show();
+                alertWarning.hide();
+                alertSuccess.hide();
+            }
+        })
     }
 });
 
@@ -273,8 +422,8 @@ function hasRole() {
             return false;
         }
     } else {
-        return false;
         alert("Sorry, your browser does not support Web Storage...");
+        return false;
     }
 }
 

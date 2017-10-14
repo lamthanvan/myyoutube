@@ -44,7 +44,7 @@ app.controller('loginCtrl', function($window, $scope, $http, $interval) {
                     redirect();
                     $interval(redirect, 1000);
                     // console.log(rsdata.data.data.attributes.secretToken);
-                    console.log(localStorage.getItem("tokenKey"));
+                    // console.log(localStorage.getItem("tokenKey"));
                     // Retrieve
                 } else {
                     alert("Sorry, your browser does not support Web Storage...");
@@ -104,7 +104,7 @@ app.controller('authenCtrl', function($window, $scope, $route) {
         localStorage.removeItem("tokenKey");
         localStorage.removeItem("username");
         localStorage.removeItem("userId");
-        $window.location.reload();
+        $window.location.href = 'index.html';
     }
 });
 // function login() {

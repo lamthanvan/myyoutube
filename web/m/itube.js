@@ -1,6 +1,4 @@
-var VIDEO_API_URL = "https://youtube-video-api-1608.appspot.com/youtube/api";
-var MEMBER_API_URL = "https://youtube-api-challenger2.appspot.com/members";
-var MEMBER_AUTH_URL = "https://youtube-api-challenger2.appspot.com/authentication";
+
 var videoId, name, description, tags, genre, category, lstCategory, videoBOD;
 var video = {
     videoId: videoId,
@@ -25,6 +23,9 @@ var app = angular.module("itube", ["ngRoute"]).directive('onFinishRender', funct
             }
         }
     }
+});
+app.run(function($rootScope) {
+    $rootScope.playlistsModel;
 });
 app.directive('ngConfirmClick', [
     function() {

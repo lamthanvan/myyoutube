@@ -2,7 +2,7 @@
     <h4 class="card-title">
         Upload video
     </h4>
-    <form class="form-control bg-itube-default no-border" ng-controller="uploadVideoCtrl" ng-init="videoToUpload">
+    <form class="form-control bg-itube-light no-border" ng-controller="uploadVideoCtrl" ng-init="init()">
         <div class="fixed">
             <div class="alert alert-success " id="alert-success" style="display: none">
             </div>
@@ -17,10 +17,10 @@
             </label>
             <div class="col-md-8">
                 <div class="input-group">
-                    <input aria-describedby="linkHelp" class="form-control" id="video-link" name="video-link" ng-model="videoURL" placeholder="Link video from youtube." required="" type="text">
+                    <input aria-describedby="linkHelp" class="form-control" id="video-link" name="video-link" ng-model="ytURL" placeholder="Link video from youtube." required="" type="url">
                         <span class="input-group-btn ">
-                            <button class="btn btn-primary" id="btn-check-link" type="button" ng-click="getLink()">
-                                Check!
+                            <button class="btn btn-primary" id="btn-check-link" ng-click="getYTData()" type="button">
+                                Load!
                             </button>
                         </span>
                     </input>
@@ -35,7 +35,7 @@
                 Name
             </label>
             <div class="col-md-8">
-                <input class="form-control" id="video-name" name="video-name" placeholder="Enter a name for your video." required="" type="text" ng-model="videoToUpload.name"/>
+                <input class="form-control" id="video-name" name="video-name" ng-model="videoToUpload.name" placeholder="Enter a name for your video." required="" type="text"/>
             </div>
         </div>
         <div class="form-group row">
@@ -43,7 +43,7 @@
                 Description
             </label>
             <div class="col-md-8">
-                <textarea class="form-control" id="video-description" name="video-description" placeholder="Descript your video." rows="8" ng-model="videoToUpload.description">
+                <textarea class="form-control" id="video-description" name="video-description" ng-model="videoToUpload.description" placeholder="Descript your video." rows="8">
                 </textarea>
             </div>
         </div>
@@ -52,73 +52,37 @@
                 Tags
             </label>
             <div class="col-md-8">
-                <input class="form-control" id="video-tags" name="video-tags" placeholder="Enter some tags for your video." type="text" ng-model="videoToUpload.keywords"/>
-            </div>
-        </div>
-        <div class="form-group row">
-            <label class="form-control-label col-md-3" for="video-category">
-                Category
-            </label>
-            <div class="col-md-8">
-                <label class="checkbox-inline" id="video-category">
-                    <input name="video-category" type="checkbox" value="music">
-                        Music
-                    </input>
-                </label>
-                <label class="checkbox-inline">
-                    <input name="video-category" type="checkbox" value="movie">
-                        Movie
-                    </input>
-                </label>
-                <label class="checkbox-inline">
-                    <input name="video-categor" type="checkbox" value="cartoon" y="" >
-                        Cartoon
-                    </input>
-                </label>
+                <input class="form-control" id="video-tags" name="video-tags" ng-model="videoToUpload.keywords" placeholder="Enter some tags for your video." type="text"/>
             </div>
         </div>
         <div class="form-group row">
             <label class="form-control-label col-md-3" for="video-keywords">
-               Playlist
+                Playlist
             </label>
             <div class="col-md-8">
-                <select name="">
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    
+                <select ng-model="playlist" ng-options="playlist.attributes.name for playlist in playlistsModel">
+                   <!--  <option ng-repeat="playlist in playlistsModel" value="playlist.id">{{playlist.attributes.name}}
+                    </option> -->
                 </select>
-            </div>
-        </div>
-        <div class="form-group row">
-            <label class="form-control-label col-md-3" for="video-status">
-                Status
-            </label>
-            <div class="col-md-8" id="video-status">
-                <label class="radio-inline">
-                    <input name="video-status" type="checkbox">
-                        Active
-                    </input>
-                </label>
+                {{playlist.id}}
             </div>
         </div>
         <div class="form-group row">
             <label class="control-label col-md-3">
             </label>
             <div class="col-md-8">
-                <button class="btn btn-primary" id="btn-submit">
+                <button class="btn btn-primary" id="btn-submit" ng-click="doSubmit()">
                     Submit
                 </button>
-                <button class="btn btn-default" type="reset">
+                <button class="btn btn-danger" type="reset">
                     Reset
                 </button>
             </div>
         </div>
     </form>
 </div>
-<script src="../m/ytAPI.js" type="text/javascript">
-</script>
+<script src="../../m/ytAPI.js" type="text/javascript">
+            </script>
 <!-- <script>
     console.log('login need');
      // if (typeof(Storage) !== "undefined") {
