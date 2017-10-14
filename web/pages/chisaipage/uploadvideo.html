@@ -35,16 +35,18 @@
                 Name
             </label>
             <div class="col-md-8">
-                <input class="form-control" id="video-name" name="video-name" ng-model="videoToUpload.name" placeholder="Enter a name for your video." required="" type="text"/>
+                <input class="form-control" id="video-name" name="video-name" ng-model="attributes.name" placeholder="Enter a name for your video." required="" type="text"/>
             </div>
+            <!-- {{attributes.name}} -->
         </div>
         <div class="form-group row">
             <label class="form-control-label col-md-3" for="video-description">
                 Description
             </label>
             <div class="col-md-8">
-                <textarea class="form-control" id="video-description" name="video-description" ng-model="videoToUpload.description" placeholder="Descript your video." rows="8">
+                <textarea class="form-control" id="video-description" name="video-description" ng-model="attributes.description" placeholder="Descript your video." rows="8">
                 </textarea>
+                <!-- {{attributes.description}} -->
             </div>
         </div>
         <div class="form-group row">
@@ -52,7 +54,8 @@
                 Tags
             </label>
             <div class="col-md-8">
-                <input class="form-control" id="video-tags" name="video-tags" ng-model="videoToUpload.keywords" placeholder="Enter some tags for your video." type="text"/>
+                <input class="form-control" id="video-tags" name="video-tags" ng-model="attributes.keywords" placeholder="Enter some tags for your video." type="text"/>
+                <!-- {{attributes.keywords}} -->
             </div>
         </div>
         <div class="form-group row">
@@ -60,11 +63,11 @@
                 Playlist
             </label>
             <div class="col-md-8">
-                <select ng-model="playlist" ng-options="playlist.attributes.name for playlist in playlistsModel">
+                <select ng-model="playlist" ng-options="playlist.attributes.name for playlist in playlistsModel" ng-change="setPlId()">
                    <!--  <option ng-repeat="playlist in playlistsModel" value="playlist.id">{{playlist.attributes.name}}
                     </option> -->
                 </select>
-                <!-- {{playlist.id}} -->
+                <!-- {{attributes.playlistId}} -->
             </div>
         </div>
         <div class="form-group row">

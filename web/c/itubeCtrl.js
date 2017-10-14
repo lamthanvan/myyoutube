@@ -26,7 +26,7 @@ app.controller('videosCtrl', function($scope, $http) {
             },
             url: VIDEO_API_URL
         }).then(function successCallback(response, status, xhr) {
-            $scope.videos = response.data;
+            $scope.videos = response.data.data;
             console.log($scope.videos)
         }, function errorCallback(response) {
             console.log(resp);
@@ -257,24 +257,28 @@ app.controller('uploadVideoCtrl', function($scope, $http) {
         type: "playlist",
         id: "0",
         "attributes": {
-            "name": "Không thuộc playlist"
+            "name": "Chung"
         }
     };
+    $scope.attributes = {
+        "youtubeId": $scope.ytId,
+        "name": "",
+        "description": "",
+        "keywords": "",
+        "playlistId": "",
+        "thumbnail": ""
+    }
     $scope.videoToUpload = {
         "data": {
             "type": "video",
-            "attributes": {
-                "youtubeId": "",
-                "name": "",
-                "description": "",
-                "keywords": "",
-                "playlistId": "",
-                "thumbnail": ""
-            }
+            "attributes": $scope.attributes
         }
     };
     $scope.init = function() {
         $scope.getPlaylistModel();
+    }
+    $scope.setPlId = function() {
+        $scope.attributes.playlistId = $scope.playlist.id;
     }
     $scope.getPlaylistModel = function() {
         $http({
@@ -298,6 +302,8 @@ app.controller('uploadVideoCtrl', function($scope, $http) {
     }
     $scope.doSubmit = function() {
         console.log($scope.videoToUpload);
+        console.log(VIDEO_API_URL)
+        
         $http({
             method: 'POST',
             headers: {
@@ -307,11 +313,12 @@ app.controller('uploadVideoCtrl', function($scope, $http) {
             url: VIDEO_API_URL,
             data: $scope.videoToUpload
         }).then(function successCallback(response) {
-            $('#alert-success').text('Success');
+            $('#alert-success').text('Tải lên thành công!');
             $('#alert-success').show();
             $('#alert-error').hide();
         }, function errorCallback(response) {
             var resp = response.data;
+            console.log(resp)
             $('#alert-error').text(resp.errors[0].title + '! ' + resp.errors[0].detail);
             $('#alert-error').show();
             $('#alert-success').hide();
@@ -322,8 +329,8 @@ app.controller('uploadVideoCtrl', function($scope, $http) {
         if (isValidURL($scope.ytURL)) {
             // console.log('valid url')
             var url = new URL($scope.ytURL);
-            $scope.ytId = getParameterByName("v", url);
-            $scope.isExitsURL = 'https://www.googleapis.com/youtube/v3/videos?part=id&id=' + $scope.ytId + '&key=' + API_KEY;
+            $scope.attributes.youtubeId = getParameterByName("v", url);
+            $scope.isExitsURL = 'https://www.googleapis.com/youtube/v3/videos?part=id&id=' + $scope.attributes.youtubeId + '&key=' + API_KEY;
             $http({
                 url: $scope.isExitsURL,
                 type: 'GET'
@@ -332,7 +339,12 @@ app.controller('uploadVideoCtrl', function($scope, $http) {
                 if (response.data.pageInfo.totalResults === 1) {
                     $scope.ytApiGetVideo();
                 } else {
-                    // console.log('khong ton tai')
+                    $scope.attributes.name = "";
+                    $scope.attributes.description = "";
+                    $scope.attributes.keywords = "";
+                    $('#alert-error').text('Video không tồn tại!');
+                    $('#alert-error').show();
+                    $('#alert-success').hide();
                 }
             }, function errorCallback(response) {
                 console.log('nhay vao error');
@@ -344,7 +356,7 @@ app.controller('uploadVideoCtrl', function($scope, $http) {
         var alertWarning = $('#alert-warning');
         var alertError = $('#alert-error');
         var alertSuccess = $('#alert-success');
-        YT_API_URL = 'https://www.googleapis.com/youtube/v3/videos?id=' + $scope.ytId + '&key=' + API_KEY + '&fields=items&part=snippet,statistics';
+        YT_API_URL = 'https://www.googleapis.com/youtube/v3/videos?id=' + $scope.attributes.youtubeId + '&key=' + API_KEY + '&fields=items&part=snippet,statistics';
         console.log(YT_API_URL);
         video = null;
         $http({
@@ -357,10 +369,9 @@ app.controller('uploadVideoCtrl', function($scope, $http) {
             //console.log(response.data)
             var video = response.data.items[0].snippet;
             console.log(video)
-
-            $scope.videoToUpload.name = video.title;
-            $scope.videoToUpload.description = video.description;
-            // $scope.videoToUpload.keywords = JSON.stringify(video.tags);
+            $scope.attributes.name = video.title;
+            $scope.attributes.description = video.description;
+            $scope.attributes.keywords = JSON.stringify(video.tags);
         }, function errorCallback(response) {
             $('#alert-error').text('Video không tồn tại!');
             $('#alert-error').show();

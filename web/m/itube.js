@@ -1,4 +1,3 @@
-
 var videoId, name, description, tags, genre, category, lstCategory, videoBOD;
 var video = {
     videoId: videoId,
@@ -24,8 +23,9 @@ var app = angular.module("itube", ["ngRoute"]).directive('onFinishRender', funct
         }
     }
 });
-app.run(function($rootScope) {
+app.run(function($rootScope,$http) {
     $rootScope.playlistsModel;
+    
 });
 app.directive('ngConfirmClick', [
     function() {
@@ -50,7 +50,7 @@ app.config(function($routeProvider) {
     }).when("/home/videos", {
         templateUrl: "chisaipage/videos.html"
     }).when("/home/playlist", {
-        templateUrl: "chisaipage/playlist.html",      
+        templateUrl: "chisaipage/playlist.html",
     }).when("/home/upload", {
         templateUrl: "chisaipage/uploadvideo.html"
     }).when("/home/contact", {
@@ -59,7 +59,6 @@ app.config(function($routeProvider) {
         templateUrl: "chisaipage/sitemap.html"
     });
 });
-
 //////effect + page ready control
 window.onscroll = function() {
     scrollFunction()
