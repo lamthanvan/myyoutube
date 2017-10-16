@@ -24,10 +24,18 @@
     background-color: #333333;
     color: #ffffff;
 }
-.itube-bg-comfort {
+.bg-itube-comfort {
     background-color: #3D3D3D
 }
-
+.bt-itube-patterns{
+background:
+radial-gradient(black 15%, transparent 16%) 0 0,
+radial-gradient(black 15%, transparent 16%) 8px 8px,
+radial-gradient(rgba(255,255,255,.1) 15%, transparent 20%) 0 1px,
+radial-gradient(rgba(255,255,255,.1) 15%, transparent 20%) 8px 9px;
+background-color:#282828;
+background-size:16px 16px;
+}
 .bg-light {
     background-color: #fff;
     border-radius: 5px;
@@ -580,7 +588,28 @@
     display: none;
     transition: 1s;
 }
+.pl-thumb{
+    
+}
+a.pl-thumb-goto{
+    position: absolute;  
+    background: rbga(0,0,0,0.8);  
+    transition: 0.5s;
+    color: #fff;
+    text-decoration: none;
+    z-index: 100;
+}
 
+.pl-thumb:hover .pl-thumb-goto{
+    display: block;
+     background: rbga(0,0,0,1);  
+    
+}
+.img-thumbnail-custom{
+    height: 10rem;
+    
+  
+}
 .playlist-body {
     display: inline-block;
     min-height: 15rem;

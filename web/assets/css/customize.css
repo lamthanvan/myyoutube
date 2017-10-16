@@ -588,7 +588,28 @@ background-size:16px 16px;
     display: none;
     transition: 1s;
 }
+.pl-thumb{
+    
+}
+a.pl-thumb-goto{
+    position: absolute;  
+    background: rbga(0,0,0,0.8);  
+    transition: 0.5s;
+    color: #fff;
+    text-decoration: none;
+    z-index: 100;
+}
 
+.pl-thumb:hover .pl-thumb-goto{
+    display: block;
+     background: rbga(0,0,0,1);  
+    
+}
+.img-thumbnail-custom{
+    height: 10rem;
+    
+  
+}
 .playlist-body {
     display: inline-block;
     min-height: 15rem;

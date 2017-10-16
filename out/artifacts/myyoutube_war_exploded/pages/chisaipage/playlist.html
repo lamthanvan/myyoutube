@@ -1,8 +1,8 @@
 <div ng-controller="playlistCtrl" ng-init="init()">
-    <div ng-show="playlists">
+    <div ng-show="show">
         <div class="pll-switch-tab">
             <nav class="nav nav-tabs" id="playlistTab" role="tablist">
-                <a class="nav-item nav-link" ng-class="{'active': tabName ==='playlist'}" ng-click="switchTab('playlist')">
+                <a class="nav-item nav-link" ng-class="{'active': tabName ==='playlist'}" ng-click="switchTab('playlist'); ini()">
                     Playlist
                 </a>
                 <a class="nav-item nav-link" ng-class="{'active': tabName ==='new-playlist'}" ng-click="switchTab('new-playlist')">
@@ -13,7 +13,7 @@
         <div class="col-md-12" ng-switch="tabName">
             <div class="col-md-12 " ng-switch-when="playlist">
                 <div class="row col-md-12 mt-3">
-                    <nav class="col-md-12">
+                    <nav class="col-md-12" ng-show="totalPage">
                         <ul class="pagination justify-content-center">
                             <li class="page-item" ng-class="{'disabled': currentPage<=1}">
                                 <a class="page-link" href="" ng-click="prev()" ng-model="currentPage">
@@ -21,18 +21,15 @@
                                 </a>
                             </li>
                             <li class="page-item" ng-class="{'disabled': currentPage<=1}">
-                                <a class="page-link" href="" ng-click="pagination('minus')" ng-bind="currentPage">
-                                   
+                                <a class="page-link" href="" ng-bind="currentPage" ng-click="pagination('minus')">
                                 </a>
                             </li>
                             <li class="page-item" ng-class="{'disabled': currentPage>=totalPage}">
-                                <a class="page-link" href="" ng-click="pagination('c')" ng-bind="currentPage+1">
-                                   
+                                <a class="page-link" href="" ng-bind="currentPage+1" ng-click="pagination('c')">
                                 </a>
                             </li>
                             <li class="page-item" ng-class="{'disabled': currentPage>=totalPage-1}">
-                                <a class="page-link" href="" ng-click="pagination('plus')" ng-bind="currentPage+2">
-                                 
+                                <a class="page-link" href="" ng-bind="currentPage+2" ng-click="pagination('plus')">
                                 </a>
                             </li>
                             <li class="page-item" ng-class="{'disabled': currentPage>=totalPage-1}">
@@ -44,23 +41,38 @@
                     </nav>
                     <!-- {{totalPage}} -->
                 </div>
-                <div class="col-md-4 col-lg-4 pr-3 pl-3 pt-3 pb-3 float-left" name="video-block" ng-repeat="playlist in playlists ">
-                    <div class="thumbnail text-white bg-dark mb-3" ng-if="playlist">
+                <div class="col-md-4 col-lg-4 mb-3 float-left pl-thumb" name="video-block" ng-repeat="playlist in playlists">
+                    <div class="thumbnail text-white bg-dark " ng-if="playlist">
                         <div class="card-header">
                             <span class="sub-no">
                                 no.
                             </span>
-                            <span ng-bind="playlist.id"></span>
+                            <span ng-bind="playlist.id">
+                            </span>
                         </div>
-                        <div class="playlist-body p-3">
-                            <img alt="..." class="img-thumbnail" src="{{playlist.attributes.thumbnailUrl}}">
-                                <h5 class="card-title" ng-bind="playlist.attributes.name">
-                                   
-                                </h5>
-                                <p class="card-text" ng-bind="playlist.attributes.description">
-                                    
-                                </p>
-                            </img>
+                        <div class="playlist-body col-md-12">
+                            <img alt="playlist thumbnail" class="img-thumbnail img-thumbnail-custom" err-src="../assets/img/error404-1.png" ng-src="{{playlist.attributes.thumbnailUrl}}"/>
+                            <h5 class="card-title pt-3" ng-bind="playlist.attributes.name">
+                            </h5>
+                            <p class="card-text" ng-bind="playlist.attributes.description">
+                            </p>
+                            <a class="pl-thumb-goto col-md-12" href="">
+                                Chi tiết
+                            </a>
+                        </div>
+                        <div class="card-footer ">
+                            <div class="row justify-content-center">
+                                <div class="col-md-6">
+                                    <button class="btn btn-info col-md-12">
+                                        Sửa
+                                    </button>
+                                </div>
+                                <div class="col-md-6">
+                                    <button class="btn btn-danger col-md-12">
+                                        Xoá
+                                    </button>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="thumbnail text-white bg-dark mb-3" ng-if="!playlist">
@@ -82,8 +94,7 @@
                     </div>
                 </div>
                 <div class="row col-md-12 mt-3">
-                    <nav class="col-md-12">
-                            <nav class="col-md-12">
+                    <nav class="col-md-12" ng-show="totalPage">
                         <ul class="pagination justify-content-center">
                             <li class="page-item" ng-class="{'disabled': currentPage<=1}">
                                 <a class="page-link" href="" ng-click="prev()" ng-model="currentPage">
@@ -91,18 +102,15 @@
                                 </a>
                             </li>
                             <li class="page-item" ng-class="{'disabled': currentPage<=1}">
-                                <a class="page-link" href="" ng-click="pagination('minus')" ng-bind="currentPage">
-                                   
+                                <a class="page-link" href="" ng-bind="currentPage" ng-click="pagination('minus')">
                                 </a>
                             </li>
                             <li class="page-item" ng-class="{'disabled': currentPage>=totalPage}">
-                                <a class="page-link" href="" ng-click="pagination('c')" ng-bind="currentPage+1">
-                                   
+                                <a class="page-link" href="" ng-bind="currentPage+1" ng-click="pagination('c')">
                                 </a>
                             </li>
                             <li class="page-item" ng-class="{'disabled': currentPage>=totalPage-1}">
-                                <a class="page-link" href="" ng-click="pagination('plus')" ng-bind="currentPage+2">
-                                 
+                                <a class="page-link" href="" ng-bind="currentPage+2" ng-click="pagination('plus')">
                                 </a>
                             </li>
                             <li class="page-item" ng-class="{'disabled': currentPage>=totalPage-1}">
@@ -111,7 +119,6 @@
                                 </a>
                             </li>
                         </ul>
-                    </nav>
                     </nav>
                     <!-- {{totalPage}} -->
                 </div>
@@ -178,22 +185,24 @@
             </div>
         </div>
     </div>
-    <div class="col-md-4 col-lg-4 pr-3 pl-3 pt-3 pb-3 float-left" ng-show="show">
+    <div class="col-md-4 col-lg-4 pr-3 pl-3 pt-3 pb-3 float-left" ng-show="!show">
         <div class="thumbnail text-white bg-dark mb-3">
             <div class="card-header">
                 <span class="sub-no">
                     error.
                 </span>
-                 404
+                403
             </div>
             <div class="playlist-body p-3">
-                <img alt="..." class="img-thumbnail" src="../assets/img/loi-404-not-found.jpg">
-                    <h5 class="card-title">
-                        Không thể tải nội dung
+                <img alt="..." class="img-thumbnail" src="../assets/img/403.png">
+                    <h5 class="card-title pt-2">
+                        Truy cập bị từ chối
                     </h5>
-                    <a class="card-text" href="login.html" style="color: #fff;text-decoration: underline;">
-                        Đăng nhập để truy cập
-                    </a>
+                    <span class="card-text">
+                        <a  href="login.html" style="color: #fff;text-decoration: underline;">
+                            Đăng nhập để truy cập
+                        </a>
+                    </span>
                 </img>
             </div>
         </div>

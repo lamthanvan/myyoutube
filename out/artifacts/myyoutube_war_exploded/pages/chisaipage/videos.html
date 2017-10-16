@@ -1,7 +1,7 @@
-<div aria-labelledby="v-pills-home" id="v-pills-home" role="tabpanel" ng-controller="videosCtrl" ng-init="init()">
+<div aria-labelledby="v-pills-home" id="v-pills-home" ng-controller="videosCtrl" ng-init="init()" role="tabpanel">
     <!-- content row -->
     <div class="row" id="page-content">
-        <div class="row col-md-12 form-group " ng-show="videos">
+        <div class="row col-md-12 form-group " ng-show="show">
             <div class="col-md-2 text-right">
                 Search:
             </div>
@@ -14,51 +14,46 @@
                     </option> -->
                 </select>
             </div>
-            <div class="row col-md-3 form-group">
+           <!--  <div class="row col-md-3 form-group">
                 <div class="form-check">
                     <label class="form-check-label">
-                        <input class="form-check-input" ng-model="enableFn" ng-change="switchFn()" type="checkbox">
+                        <input class="form-check-input" ng-change="switchFn()" ng-model="enableFn" type="checkbox">
                             Thao tác
                         </input>
                     </label>
-                      {{enableFn}}
+                    {{enableFn}}
                 </div>
-            </div>
+            </div> -->
         </div>
-        <div class="col-md-4 col-lg-4 pr-3 pl-3 pb-3" name="video-block" ng-if="video" ng-repeat="video in videos | filter : videoname">
-            <div class="thumbnail" ng-if="video">
+        <div class="col-md-4 col-lg-4 pr-3 pl-3 pb-3" name="video-block"  ng-repeat="video in videos | filter : videoname">
+            <div class="thumbnail" ng-show="show">
                 <img alt="Preview image" class="card-img-top thumbnail-pre-img" data-holder-rendered="true" ng-src="https://i.ytimg.com/vi/{{video.attributes.youtubeId | limitTo:11}}/hqdefault.jpg">
                 </img>
                 <a class="thumbnail-btn-play" ng-href="./watch.html?v={{video.id}}&yt={{video.attributes.youtubeId}}">
                 </a>
                 <a class="video-name" ng-bind="video.attributes.name" ng-href="./watch.html?v={{video.id}}&yt={{video.attributes.youtubeId}}">
-                </a> 
-                <div ng-show="enableFn">
-                   
-                   {{enableFn}}
-                    <!-- Example single danger button -->
-                    <div class="btn-group top-right">
-                        <button aria-expanded="false" aria-haspopup="true" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" type="button" >
-                           Thao tác<!--  -->
-                        </button>
-                        <div class="dropdown-menu">
-                            <a class="dropdown-item" confirmed-click="deleteVideo(video.id)" ng-confirm-click="Are you sure to delete this record ?">
-                                Xoá
-                            </a>
-                            <a class="dropdown-item" confirmed-click="editVideo(video.id)">
-                                Sửa
-                            </a>
-                            
-                        </div>
+                </a>
+
+                <!-- Example single danger button -->
+                <div class="btn-group top-right">
+                    <button aria-expanded="false" aria-haspopup="true" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" type="button">
+                        Thao tác
+                        <!-- -->
+                    </button>
+                    <div class="dropdown-menu">             
+                         <button class="dropdown-item" href="" click="editVideo(video.id)"><i class="fa fa-pencil fa-fw" aria-hidden="true"></i> Sửa</button>
+                        <a class="dropdown-item" confirmed-click="deleteVideo(video.id)" ng-confirm-click="Are you sure to delete this record ?">
+                            Xoá
+                        </a>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="col-md-4 col-lg-4 pr-3 pl-3 pb-3" name="video-block" ng-show="show">
+        <div class="col-md-4 col-lg-4 pr-3 pl-3 pb-3" name="video-block" ng-show="!show">
             <div class="thumbnail">
-                <img alt="Preview image" class="card-img-top thumbnail-pre-img" data-holder-rendered="true" src="../assets/img/loi-404-not-found.jpg">
-                    <strong class="video-name">
-                        Tính năng cần
+                <img alt="Preview image" class="card-img-top thumbnail-pre-img" data-holder-rendered="true" src="../assets/img/403.png">
+                    <strong class="video-name text-center">
+                        Truy cập bị từ chối, hãy
                         <a href="login.html" style="text-decoration: underline;">
                             đăng nhập
                         </a>

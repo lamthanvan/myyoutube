@@ -255,9 +255,10 @@ app.controller('playlistCtrl', function playlistCtrl($scope, $http, $window) {
                 url: PLAYLIST_API_URL,
                 data: $scope.dataToSend
             }).then(function successCallback(response) {
-                $('#alert-success').text('Success');
+                $('#alert-success').text('Success, playlist is created');
                 $('#alert-success').show();
                 $('#alert-error').hide();
+                console.log(response);
             }, function errorCallback(response) {
                 var resp = response.data;
                 $('#alert-error').text(resp.errors[0].title + '! ' + resp.errors[0].detail);
@@ -480,11 +481,6 @@ function getLink($scope) {
     alert(videoToUpload.videoId)
 }
 
-function groupByPlaylist($scope, $http) {
-    $scope.videos;
-    $scope.videosService;
-    $scope.init = function() {}
-}
 
 function submitForm($scope) {}
 

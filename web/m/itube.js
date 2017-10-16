@@ -12,25 +12,6 @@ var app = angular.module("itube", ["ngRoute"]).directive('onFinishRender', funct
         }
     }
 });
-app.run(function($rootScope,$http) {
-    $rootScope.playlistsModel;
-    
-});
-app.directive('ngConfirmClick', [
-    function() {
-        return {
-            link: function(scope, element, attr) {
-                var msg = attr.ngConfirmClick || "Are you sure?";
-                var clickAction = attr.confirmedClick;
-                element.bind('click', function(event) {
-                    if (window.confirm(msg)) {
-                        scope.$eval(clickAction)
-                    }
-                });
-            }
-        };
-    }
-])
 app.config(function($routeProvider) {
     $routeProvider.when("/", {
         templateUrl: "chisaipage/videos.html"
@@ -48,6 +29,38 @@ app.config(function($routeProvider) {
         templateUrl: "chisaipage/sitemap.html"
     });
 });
+app.directive('ngConfirmClick', [
+    function() {
+        return {
+            link: function(scope, element, attr) {
+                var msg = attr.ngConfirmClick || "Are you sure?";
+                var clickAction = attr.confirmedClick;
+                element.bind('click', function(event) {
+                    if (window.confirm(msg)) {
+                        scope.$eval(clickAction)
+                    }
+                });
+            }
+        };
+    }
+]);
+ app.directive('errSrc', function() {
+      return {
+        link: function(scope, element, attrs) {
+          element.bind('error', function() {
+            if (attrs.src != attrs.errSrc) {
+              attrs.$set('src', attrs.errSrc);
+            }
+          });
+          
+          attrs.$observe('ngSrc', function(value) {
+            if (!value && attrs.errSrc) {
+              attrs.$set('src', attrs.errSrc);
+            }
+          });
+        }
+      }
+    });
 //////effect + page ready control
 window.onscroll = function() {
     scrollFunction()
@@ -71,7 +84,7 @@ function scrollFunction() {
 }
 
 function isValidURL(url) {
-    var expression = /^(?:https?:\/\/)?(?:www\.)?youtube\.com\/watch\?(?=.*v=((\w|-){11}))(?:\S+)?$/;
+    var expression = /^(?:https?:\/\/)?(?:www|m\.)?youtube\.com\/watch\?(?=.*v=((\w|-){11}))(?:\S+)?$/;
     var regex = new RegExp(expression);
     if (url.match(regex)) {
         return true;
