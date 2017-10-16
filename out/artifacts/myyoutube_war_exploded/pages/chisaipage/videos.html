@@ -1,0 +1,74 @@
+<div aria-labelledby="v-pills-home" id="v-pills-home" role="tabpanel" ng-controller="videosCtrl" ng-init="init()">
+    <!-- content row -->
+    <div class="row" id="page-content">
+        <div class="row col-md-12 form-group " ng-show="videos">
+            <div class="col-md-2 text-right">
+                Search:
+            </div>
+            <div class="col-md-4">
+                <input class="form-control" ng-model="videoname" type="text"/>
+            </div>
+            <div class="col-md-3" ng-controller="uploadVideoCtrl" ng-init="init()">
+                <select class="custom-select" ng-model="playlist" ng-options="playlist.attributes.name for playlist in playlistsModel">
+                    <!--  <option ng-repeat="playlist in playlistsModel" value="playlist.id">{{playlist.attributes.name}}
+                    </option> -->
+                </select>
+            </div>
+            <div class="row col-md-3 form-group">
+                <div class="form-check">
+                    <label class="form-check-label">
+                        <input class="form-check-input" ng-model="enableFn" ng-change="switchFn()" type="checkbox">
+                            Thao tác
+                        </input>
+                    </label>
+                      {{enableFn}}
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 col-lg-4 pr-3 pl-3 pb-3" name="video-block" ng-if="video" ng-repeat="video in videos | filter : videoname">
+            <div class="thumbnail" ng-if="video">
+                <img alt="Preview image" class="card-img-top thumbnail-pre-img" data-holder-rendered="true" ng-src="https://i.ytimg.com/vi/{{video.attributes.youtubeId | limitTo:11}}/hqdefault.jpg">
+                </img>
+                <a class="thumbnail-btn-play" ng-href="./watch.html?v={{video.id}}&yt={{video.attributes.youtubeId}}">
+                </a>
+                <a class="video-name" ng-bind="video.attributes.name" ng-href="./watch.html?v={{video.id}}&yt={{video.attributes.youtubeId}}">
+                </a> 
+                <div ng-show="enableFn">
+                   
+                   {{enableFn}}
+                    <!-- Example single danger button -->
+                    <div class="btn-group top-right">
+                        <button aria-expanded="false" aria-haspopup="true" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" type="button" >
+                           Thao tác<!--  -->
+                        </button>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" confirmed-click="deleteVideo(video.id)" ng-confirm-click="Are you sure to delete this record ?">
+                                Xoá
+                            </a>
+                            <a class="dropdown-item" confirmed-click="editVideo(video.id)">
+                                Sửa
+                            </a>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 col-lg-4 pr-3 pl-3 pb-3" name="video-block" ng-show="show">
+            <div class="thumbnail">
+                <img alt="Preview image" class="card-img-top thumbnail-pre-img" data-holder-rendered="true" src="../assets/img/loi-404-not-found.jpg">
+                    <strong class="video-name">
+                        Tính năng cần
+                        <a href="login.html" style="text-decoration: underline;">
+                            đăng nhập
+                        </a>
+                    </strong>
+                </img>
+            </div>
+        </div>
+        <div class="row">
+            <ul class="pagination-sm" id="pagination">
+            </ul>
+        </div>
+    </div>
+</div>

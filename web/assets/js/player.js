@@ -7,10 +7,13 @@ firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 var player;
 
 function onYouTubeIframeAPIReady() {
+    // alert($scope.videoInfo.data.attributes.youtubeId);
+    
+    // console.log(ytId);
     player = new YT.Player('player', {
         height: '450',
         width: '100%',
-        videoId: videoId,
+        videoId: ytId,
         events: {
             // 'onReady': onPlayerReady,
             // 'onStateChange': onPlayerStateChange

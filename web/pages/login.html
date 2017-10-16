@@ -15,7 +15,7 @@
             </script>
         </meta>
     </head>
-    <body class="itube-bg-light" ng-app="itube">
+    <body class="bg-itube-light" ng-app="itube">
         <div class="container-fluid pt-5 itube-rules ">
             <div class="row" id="navbar-load">
                 <!-- <div w3-include-html="navbar.htm"></div>       -->
@@ -53,21 +53,11 @@
                             </li>
                         </ul>
                         <ul class="navbar-nav navbar-right">
-                            <li class="nav-item" ng-show="!isLogined">
+                            <li class="nav-item">
                                 <a class="nav-link" href="reg.html">
                                     Register
                                 </a>
-                            </li>
-                            <li class="nav-item" ng-show="isLogined">
-                                <a class="nav-link" href="">
-                                    {{authenName}}
-                                </a>
-                            </li>
-                            <li class="nav-item" ng-show="isLogined">
-                                <a class="nav-link" href="" ng-click="logout()">
-                                    logout
-                                </a>
-                            </li>
+                            </li>                       
                         </ul>
                     </div>
                 </nav>
@@ -77,13 +67,13 @@
                     Header
                 </h1>
             </div> -->
-            <div class="row col-md-12 pt-5" ng-controller="loginCtrl">
+            <div class="row col-md-12 pt-5 mt-5" ng-controller="loginCtrl">
                 <div class="col-md-3">
                 </div>
-                <div class="col-md-6" ng-init="init()">
-                    <h2>
+                <div class="col-md-6 pt-5 pb-5 bg-light" ng-init="init()">
+                    <h1>
                         Login
-                    </h2>
+                    </h1>
                     <div class="alert alert-success alert-dismissible fade show" ng-model="remain" ng-show="success" role="alert">
                         <button aria-label="Close" class="close" data-dismiss="alert" type="button">
                             <span aria-hidden="true">
@@ -93,7 +83,7 @@
                         <strong>
                             Login success!
                         </strong>
-                        Auto redirect in {{remain}}s or <a class="alert-link" href="index.html">direct now</a>
+                        Auto redirect in <span ng-bind="remain"></span>s or <a class="alert-link" href="index.html">direct now</a>
                     </div>
                     <div class="alert alert-danger alert-dismissible fade show" ng-show="error" role="alert">
                         <button aria-label="Close" class="close" data-dismiss="alert" type="button">
@@ -101,9 +91,9 @@
                                 ×
                             </span>
                         </button>
-                        {{msg}}
+                       <span ng-bind="msg"></span>
                     </div>
-                    <form id="login-form">
+                    <form id="login-form" ng-submit="login()">
                         <div class="row form-group">
                             <div class="col-md-3">
                                 <label for="username">
@@ -127,12 +117,15 @@
                             </div>
                         </div>
                         <div class="row form-group">
-                            <div class="col-md-3">
-                            </div>
-                            <div class="col-md-8">
-                                <button class="btn btn-primary" id="btn-login" ng-click="login($scope,$http)" type="button">
+                            <div class="col md-1"></div>
+                            <div class="col-md-10">
+                                <button class="btn btn-primary col-md-5 mt-1" id="btn-login" ng-click="login()" type="button">
                                     Login
                                 </button>
+                                 <a class="btn btn-secondary col-md-5 mt-1" id="btn-login" href="reg.html">
+                                  Register
+                                </a>
+                                <button type="submit" ng-click="login()" ng-hide="true"></button>
                             </div>
                         </div>
                     </form>

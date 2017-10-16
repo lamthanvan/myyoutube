@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" content="width=device-width, initial-scale=1.0" name="viewport">
+            <title>
+                itube
+            </title>
+            <link href="../assets/css/bootstrap.min.css" rel="stylesheet"/>
+            <link href="../assets/css/customize.css" rel="stylesheet"/>
+            <link href="../assets/owl-slider/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet"/>
+            <link href="../assets/owl-slider/owlcarousel/assets/owl.theme.green.min.css" rel="stylesheet"/>
+            <script src="../assets/angular/angular.min.js" type="text/javascript">
+            </script>
+            <script src="../assets/angular/angular-loader.js" type="text/javascript">
+            </script>
+            <script src="../assets/angular/angular-route.min.js" type="text/javascript">
+            </script>
+        </meta>
+    </head>
+    <body class="bg-itube-miyasui" ng-app="itube">
+        <div class="container-fluid pt-md-5 pt-lg-5 itube-rules" ng-controller="videoInfoCtrl">
+            <div ng-include src="'navbar.html'"></div>
+            <!-- player -->
+            <div class="row" id="video-player-container">
+                <div class="row col-md-12 bg-itube-softdark m-0">
+                    <div class="col-md-3 ">
+                    </div>
+                    <div class="col-md-6">
+                        <div id="player">
+                        </div>
+                        <div>
+                            <div class="row p-0 m-0">
+                                <h5 ng-bind="videoInfo.data.attributes.name">
+                                   
+                                </h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--  Info -->
+            <div class="row m-0 text-muted" id="video-info">
+                <div class="col-md-1 m-0">
+                </div>
+                <div class="col-md-10 col-xs-12 p-4">
+                    <div class="row ">
+                        <span>
+                            Category:
+                            <a href="" ng-bind="videoInfo.data.attributes.category">
+                               
+                            </a>
+                        </span>
+                    </div>
+                    <div class="row">
+                        <span>
+                            Upload:
+                        </span>
+                        <a href="#" ng-bind="videoInfo.data.attributes.authorName">
+                           
+                        </a>
+                    </div>
+                    <div class="row">
+                        <span>
+                            Upload date: <span ng-bind="videoInfo.data.attributes.birthday"></span>
+                        </span>
+                    </div>
+                    <div class="row">
+                        <p ng-bind="videoInfo.data.attributes.description">
+                         
+                        </p>
+                    </div>
+                    <div class="row">
+                        <span>
+                            Tags:
+                        </span>
+                        <div class="text-light" ng-repeat="tag in tags track by $index" on-finish-render="ngGetInforFinish">
+                            <a ng-href="search.html?search=video&keyword={{tag}}" ng-bind="tag">
+                                
+                            </a>
+                            <span ng-show="!$last">
+                                ,
+                            </span>
+                        </div>
+                    </div>
+                    <!-- Play list//sugest -->
+                    <div class="row">
+                        <div class="row m-0">
+                            <span>
+                                Cùng playlist
+                            </span>
+                        </div>
+                        <!-- fav slider -->
+                        <div class="owl-carousel owl-theme owl-loaded owl-container">
+                            <div class="owl-stage-outer ">
+                                <div class="owl-stage" ng-controller="videosCtrl" ng-init="init()">
+                                    <div class="owl-item video-item-info" ng-repeat="video in videos" ng-show="videos" on-finish-render="ngRepeatFinish">
+                                        <div class="thumbnail">
+                                            <img alt="Preview image" class="owl-preview-img" data-holder-rendered="true" ng-src="https://i.ytimg.com/vi/{{video.attributes.youtubeId | limitTo:11}}/hqdefault.jpg">
+                                            </img>
+                                            <a class="thumbnail-btn-play" ng-href="./watch.html?v={{video.attributes.youtubeId}}&amp;yt={{videoInfo.data.attributes.youtubeId}}">
+                                            </a>
+                                            <div class="owl-video-name">
+                                                <a ng-href="./watch.html?v={{video.attributes.youtubeId}}&amp;yt={{videoInfo.data.attributes.youtubeId}}}" ng-bind="video.attributes.name">
+                                                  
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--  <div class="owl-controls">
+                                <div class="owl-nav">
+                                    <div class="owl-prev">
+                                        prev
+                                    </div>
+                                    <div class="owl-next">
+                                        next
+                                    </div>
+                                </div>
+                            </div> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <!-- footer -->
+            </div>
+        </div>
+        <script src="../assets/js/jquery-3.2.1.min.js" type="text/javascript">
+        </script>
+        <script src="../assets/js/popper.js" type="text/javascript">
+        </script>
+        <script src="../assets/js/bootstrap.min.js" type="text/javascript">
+        </script>
+        <script src="../assets/owl-slider/owlcarousel/owl.carousel.min.js">
+        </script>
+        <script src="../assets/owl-slider/vendors/jquery.mousewheel.min.js">
+        </script>
+        <script src="../m/itube.js" type="text/javascript">
+        </script>
+        <script src="../c/itubeCtrl.js" type="text/javascript">
+        </script>
+        <script src="../m/loginModule.js" type="text/javascript">
+        </script>
+        <script src="../assets/js/player.js" type="text/javascript">
+        </script>
+
+    </body>
+</html>

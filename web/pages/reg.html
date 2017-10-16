@@ -51,7 +51,7 @@
                             </li>
                         </ul>
                         <ul class="navbar-nav navbar-right">
-                            <li class="nav-item" ng-show="!isLogined">
+                            <li class="nav-item">
                                 <a class="nav-link" href="login.html">
                                     Login
                                 </a>
@@ -60,7 +60,7 @@
                     </div>
                 </nav>
             </div>
-            <div class="row pt-5" ng-controller="registerCtrl" >
+            <div class="row pt-5" ng-controller="registerCtrl" ng-init="init()">
                 <div class="col-md-9">
                     <div class="alert alert-success" id="alert-success" style="display: none">
                     </div>
@@ -69,11 +69,11 @@
                     <form id="register-form">
                         <!--ID-->
                         <div class="form-group row">
-                            <label class="form-control-label col-md-3 " for="user-name">
+                            <label class="form-control-label col-md-3 " for="user-name" >
                                 User name
                             </label>
                             <div class="col-md-8">
-                                <input class="form-control" name="user-name" placeholder="Nhập user name" type="text">
+                                <input class="form-control" name="user-name" placeholder="Nhập user name" type="text" ng-model="attributes.username">
                                 </input>
                             </div>
                         </div>
@@ -82,7 +82,7 @@
                                 Tên đầy đủ
                             </label>
                             <div class="col-md-8">
-                                <input class="form-control" name="full-name" placeholder="Nhập họ tên" type="text">
+                                <input class="form-control" name="full-name" placeholder="Nhập họ tên" type="text" ng-model="attributes.fullname">
                                 </input>
                             </div>
                         </div>
@@ -92,7 +92,7 @@
                             </label>
                             <div class="col-md-8">
                                 <div class="input-group">
-                                    <input class="form-control" name="email" placeholder="Nhập email" type="email"/>
+                                    <input class="form-control" name="email" placeholder="Nhập email" type="email" ng-model="attributes.email"/>
                                 </div>
                             </div>
                         </div>
@@ -102,8 +102,9 @@
                                 Mật Khẩu
                             </label>
                             <div class="col-md-8">
-                                <input class="form-control" name="password" placeholder="Nhập mật khẩu" type="password">
+                                <input class="form-control" name="password" placeholder="Nhập mật khẩu" type="password" ng-model="attributes.password">
                                 </input>
+
                             </div>
                         </div>
                         <!-- Retype pass -->
@@ -112,7 +113,7 @@
                                 Xác nhận mật khẩu
                             </label>
                             <div class="col-md-8">
-                                <input class="form-control" name="confirm-password" placeholder="Xác nhận lại mật khẩu" type="password">
+                                <input class="form-control" name="confirm-password" placeholder="Xác nhận lại mật khẩu" type="password" ng-model="confirmPassword">
                                 </input>
                             </div>
                         </div>
@@ -122,7 +123,7 @@
                                 Giới tính
                             </label>
                             <div class="col-md-8">
-                                <select class="form-control" name="gender">
+                                <select class="form-control" name="gender" ng-model="attributes.gender">
                                     <option value="1">
                                         Nam
                                     </option>
@@ -137,11 +138,11 @@
                         </div>
                         <!-- Birth day -->
                         <div class="form-group row">
-                            <label class="form-control-label col-md-3" for="birthday">
+                            <label class="form-control-label col-md-3" for="birthday" >
                                 Ngày sinh
                             </label>
                             <div class="col-md-8">
-                                <input class="form-control" name="birthday" type="text">
+                                <input class="form-control" name="birthday" type="text" ng-model="attributes.birthday">
                                 </input>
                             </div>
                         </div>
@@ -151,7 +152,7 @@
                                 Ảnh đại diện
                             </label>
                             <div class="col-md-8">
-                                <input class="form-control" name="avatar" type="text">
+                                <input class="form-control" name="avatar" type="text" ng-model="attributes.avatar">
                                 </input>
                             </div>
                         </div>

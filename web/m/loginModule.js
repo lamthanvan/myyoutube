@@ -1,8 +1,8 @@
 app.controller('loginCtrl', function($window, $scope, $http, $interval) {
     $scope.remain;
     $scope.msg;
-    $scope.error;
-    $scope.success;
+    $scope.error=false;
+    $scope.success =false;
     $scope.attributes = {
         "username": '',
         "password": '',
