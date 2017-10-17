@@ -1,0 +1,61 @@
+<div aria-labelledby="v-pills-home" id="v-pills-home" ng-controller="videosCtrl" ng-init="init()" role="tabpanel">
+    <!-- content row -->
+    <div class="row" id="page-content">
+        <div class="row col-md-12 form-group " ng-show="show">
+            <div class="col-md-2 text-right">
+                Search:
+            </div>
+            <div class="col-md-4">
+                <input class="form-control" ng-model="videoname" type="text"/>
+            </div>
+            <div class="col-md-3" ng-controller="uploadVideoCtrl" ng-init="init()">
+                <select class="custom-select" ng-model="playlist" ng-options="playlist.attributes.name for playlist in playlistsModel">
+                    <!--  <option ng-repeat="playlist in playlistsModel" value="playlist.id">{{playlist.attributes.name}}
+                    </option> -->
+                </select>
+            </div>
+            <!--  <div class="row col-md-3 form-group">
+                <div class="form-check">
+                    <label class="form-check-label">
+                        <input class="form-check-input" ng-change="switchFn()" ng-model="enableFn" type="checkbox">
+                            Thao tác
+                        </input>
+                    </label>
+                    {{enableFn}}
+                </div>
+            </div> -->
+        </div>
+        <div class="row m-0 p-0">
+            
+            <div class="row p-0 m-0">
+                <div class="col-md-4 col-lg-4 pr-3 pl-3 pb-3" name="video-block" ng-repeat="(key,value) in videos | groupBy:'playlistId'">
+                   <p>[key:] {{key}}</p>
+                   <p>[vID:] <small>{{value.id}}</small></p>
+                   <p>[Name:] <small>{{value.attributes.name}}</small></p>
+                   <p>[plID:] <small>{{value.attributes.playlistId}}</small></p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="row">
+            </div>
+        </div>
+        <div class="col-md-4 col-lg-4 pr-3 pl-3 pb-3" name="video-block" ng-show="!show">
+            <div class="thumbnail">
+                <img alt="Preview image" class="card-img-top thumbnail-pre-img" data-holder-rendered="true" src="../assets/img/403.png">
+                    <strong class="video-name text-center">
+                        Truy cập bị từ chối, hãy
+                        <a href="login.html" style="text-decoration: underline;">
+                            đăng nhập
+                        </a>
+                    </strong>
+                </img>
+            </div>
+        </div>
+        <div class="row">
+            <ul class="pagination-sm" id="pagination">
+            </ul>
+        </div>
+    </div>
+</div>

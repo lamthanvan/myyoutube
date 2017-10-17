@@ -5,12 +5,20 @@
 .no-border {
     border: none;
 }
+.round-border{  
+   border-radius: 0.5rem;
 
+}
+.box-shadow{
+    box-shadow: 5px 5px 10px #6C6C6C;
+}
 .bg-itube-default {
     background-color: #141414;
     color: #fff;
 }
-
+.bg-itube-white{
+    background: white;
+}
 .bg-itube-softdark {
     background-color: #6C6B6B;
     color: #fff;
@@ -438,8 +446,10 @@ background-size:16px 16px;
     height: 5em;
     overflow-y: hidden;
 }
+.video-name:hover{
+    color: #7F007F;
 
-
+}
 /*
 *Thumbnail video modal
 */
@@ -607,8 +617,14 @@ a.pl-thumb-goto{
 }
 .img-thumbnail-custom{
     height: 10rem;
-    
+    width:100%;
   
+}
+.pl-header{
+    color: #563d7c;
+}
+a.purple-link{
+     color: #563d7c;
 }
 .playlist-body {
     display: inline-block;
@@ -629,7 +645,7 @@ a.pl-thumb-goto{
 .top-right {
     position: absolute;
     top: 0;
-    right: 1rem;
+    right: 0.9rem;
     cursor: pointer;
     
 }
@@ -646,7 +662,28 @@ a.pl-thumb-goto{
 #page-content{
     min-height: 350px;
 }
+.dropdown-custom .dropdown-item{
+    cursor: pointer;
+}
+#left-menu-container{
+    display: inline-block;
+}
+.left-collapse-menu{
+    /*width:20%;*/
+}
+.left-menu{
+    position: relative;
 
+    
+}
+.left-menu-always-on{  
+    position: fixed;
+    top: 2rem;
+   
+}
+#search-result{
+    min-height: 30rem;
+}
 /*smartphone*/
 
 @media only screen and (max-width: 767px) {

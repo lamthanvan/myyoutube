@@ -646,7 +646,25 @@ a.pl-thumb-goto{
 #page-content{
     min-height: 350px;
 }
+.dropdown-custom .dropdown-item{
+    cursor: pointer;
+}
+#left-menu-container{
+    display: inline-block;
+}
+.left-collapse-menu{
+    /*width:20%;*/
+}
+.left-menu{
+    position: relative;
 
+    
+}
+.left-menu-always-on{  
+    position: fixed;
+    top: 2rem;
+   
+}
 /*smartphone*/
 
 @media only screen and (max-width: 767px) {

@@ -7,23 +7,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f3f184aa-b58d-4b55-93da-f57cda36d924" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/myyoutube_war_exploded/WEB-INF/appengine-web.xml" afterPath="$PROJECT_DIR$/out/artifacts/myyoutube_war_exploded/WEB-INF/appengine-web.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/myyoutube_war_exploded/assets/css/customize.css" afterPath="$PROJECT_DIR$/out/artifacts/myyoutube_war_exploded/assets/css/customize.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/myyoutube_war_exploded/c/itubeCtrl.js" afterPath="$PROJECT_DIR$/out/artifacts/myyoutube_war_exploded/c/itubeCtrl.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/myyoutube_war_exploded/pages/chisaipage/playlist.html" afterPath="$PROJECT_DIR$/out/artifacts/myyoutube_war_exploded/pages/chisaipage/playlist.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/myyoutube_war_exploded/pages/chisaipage/uploadvideo.html" afterPath="$PROJECT_DIR$/out/artifacts/myyoutube_war_exploded/pages/chisaipage/uploadvideo.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/myyoutube_war_exploded/pages/chisaipage/videos.html" afterPath="$PROJECT_DIR$/out/artifacts/myyoutube_war_exploded/pages/chisaipage/videos.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/myyoutube_war_exploded/pages/watch.html" afterPath="$PROJECT_DIR$/out/artifacts/myyoutube_war_exploded/pages/watch.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/WEB-INF/appengine-web.xml" afterPath="$PROJECT_DIR$/web/WEB-INF/appengine-web.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/assets/css/customize.css" afterPath="$PROJECT_DIR$/web/assets/css/customize.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/c/itubeCtrl.js" afterPath="$PROJECT_DIR$/web/c/itubeCtrl.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/m/itube.js" afterPath="$PROJECT_DIR$/web/m/itube.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/pages/chisaipage/playlist.html" afterPath="$PROJECT_DIR$/web/pages/chisaipage/playlist.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/pages/chisaipage/uploadvideo.html" afterPath="$PROJECT_DIR$/web/pages/chisaipage/uploadvideo.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/pages/chisaipage/videos.html" afterPath="$PROJECT_DIR$/web/pages/chisaipage/videos.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/pages/index.html" afterPath="$PROJECT_DIR$/web/pages/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/pages/watch.html" afterPath="$PROJECT_DIR$/web/pages/watch.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/pages/navbar.html" afterPath="$PROJECT_DIR$/web/pages/navbar.html" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -113,8 +101,11 @@
   </component>
   <component name="RunManager" selected="Google AppEngine Dev Server.AppEngine Dev 1.9.58">
     <configuration name="AppEngine Dev 1.9.58" type="GoogleAppEngineDevServer" factoryName="Local" APPLICATION_SERVER_NAME="AppEngine Dev 1.9.58" ALTERNATIVE_JRE_ENABLED="false">
+      <option name="OPEN_IN_BROWSER_URL" value="http://localhost:8080/pages/" />
+      <option name="BROWSER_ID" value="a7bb68e0-33c0-4d6f-a81a-aac1fdb870c8" />
       <option name="UPDATE_ON_FRAME_DEACTIVATION" value="true" />
       <option name="UPDATE_CLASSES_ON_FRAME_DEACTIVATION" value="true" />
+      <option name="SHOW_DIALOG_ON_UPDATE" value="false" />
       <server-settings>
         <option name="artifact" value="myyoutube:war exploded" />
         <artifact>myyoutube:war exploded</artifact>
@@ -249,12 +240,12 @@
       <workItem from="1507994368475" duration="505000" />
       <workItem from="1508041818351" duration="883000" />
       <workItem from="1508078472251" duration="1419000" />
-      <workItem from="1508164138358" duration="862000" />
+      <workItem from="1508164138358" duration="4101000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="4112000" />
+    <option name="totallyTimeSpent" value="7351000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="48" y="23" width="1396" height="877" extended-state="6" />

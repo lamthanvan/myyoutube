@@ -31,23 +31,23 @@
             <!--//////// end slide //////////-->
             <div class="row">
                 <!-- left menu -->
-                <div class="col-md-2 col-lg-2 pt-5 left-collapse-menu" id="left-menu-container">
-                    <div class="col-md-12 mt-2" id="left-menu">
-                        <div class="nav flex-column nav-pills text-center" id="v-pills" role="tablist">
-                            <a aria-controls="v-pills-home" aria-expanded="true" class="nav-link active" data-toggle="pill" href="#!/home/" id="v-pills-home-list" ng-click="$route.reload();" role="tab">
+                <div class="col-md-2 col-lg-2 m-0 p-0 pt-5 left-collapse-menu " id="left-menu-container">
+                    <div class="col-md-12 mt-2 left-menu">                     
+                        <div class="nav flex-column nav-pills text-center p-0 m-0" id="v-pills" role="tablist" id="left-menu">
+                            <a aria-controls="v-pills-home" aria-expanded="true" class="nav-link active" data-toggle="pill" href="#!/home/" id="v-pills-home-list" role="tab">
                                 Home
                             </a>
-                            <a aria-controls="v-pills-playlist" aria-expanded="true" class="nav-link " data-toggle="pill" href="#!/home/playlist" id="v-pills-playlist" role="tab">
+                            <a aria-controls="v-pills-playlist" aria-expanded="true" class="nav-link " data-toggle="pill" href="#!/playlist" id="v-pills-playlist" role="tab">
                                 Play list
                             </a>
                             <!-- ng-class="{'disabled': {{!isLogined}}}" -->
-                            <a aria-controls="v-pills-upload" aria-expanded="true" class="nav-link" data-toggle="pill" href="#!/home/upload" id="v-pills-upload-list" role="tab">
+                            <a aria-controls="v-pills-upload" aria-expanded="true" class="nav-link" data-toggle="pill" href="#!/upload" id="v-pills-upload-list" role="tab">
                                 Upload
                             </a>
-                            <a aria-controls="v-pills-contact" aria-expanded="true" class="nav-link" data-toggle="pill" href="#!/home/contact" id="v-pills-contact-list" role="tab">
+                            <a aria-controls="v-pills-contact" aria-expanded="true" class="nav-link" data-toggle="pill" href="#!/contact" id="v-pills-contact-list" role="tab">
                                 Contact
                             </a>
-                            <a aria-controls="v-pills-sitemap" aria-expanded="true" class="nav-link" data-toggle="pill" href="#!/home/sitemap" id="v-pills-sitemap-list" role="tab">
+                            <a aria-controls="v-pills-sitemap" aria-expanded="true" class="nav-link" data-toggle="pill" href="#!/sitemap" id="v-pills-sitemap-list" role="tab">
                                 Sitemap
                             </a>
                             <p class="mt-5">
@@ -56,8 +56,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-1 col-lg-1 btn-collapse-container m-0 p-0 pt-5">
-                    <button class="c-hamburger c-hamburger--htra btn-collapse">
+                <div class="col-md-1 col-lg-1 btn-collapse-container m-0 p-0 pt-5" ng-controller="videosCtrl">
+                    <button class="c-hamburger c-hamburger--htra btn-collapse" ng-click="switchLimit()">
                         <span>
                             toggle menu
                         </span>
@@ -94,8 +94,7 @@
             </script>
             <script src="../assets/js/bootstrap.min.js" type="text/javascript">
             </script>
-            <script src="../m/membersAPI.js" type="text/javascript">
-            </script>
+           
             <script src="../m/itube.js" type="text/javascript">
             </script>
             <script src="../c/itubeCtrl.js" type="text/javascript">
@@ -141,7 +140,8 @@
                  
                       
                         $('.c-hamburger').on('click',function(){   
-                            $('div[name=video-block]').toggleClass("col-md-4 col-lg-4 col-md-3 col-lg-3 pr-3 pl-3 pb-3");
+                            $('div[name=video-block]').toggleClass("ol-md-4 col-lg-4 col-xl-4  pr-3 pl-3 pb-3 col-md-3 col-lg-3 col-xl-3");
+                            $('div[name=playlist-block]').toggleClass("col-md-4 col-lg-4 mb-3 pl-thumb col-md-3 col-lg-3");
                             $('#left-menu').toggle();
                             $('#left-menu-container').toggle();
                             $('#right-content').toggleClass('col-md-11 col-lg-11');

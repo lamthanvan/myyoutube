@@ -27,6 +27,8 @@ app.config(function($routeProvider) {
         templateUrl: "chisaipage/contact.html"
     }).when("/home/sitemap", {
         templateUrl: "chisaipage/sitemap.html"
+    }).otherwhise({
+        redirectTo: '/'
     });
 });
 app.directive('ngConfirmClick', [
@@ -80,6 +82,13 @@ function scrollFunction() {
     } else if (document.body.scrollTop > 80 || document.documentElement.scrollTop > 80) {
         // document.getElementById("navbar-top").style.top = "0";
         $('#navbar-top').removeClass('desktop-scroll-ver');
+    }
+    if (document.body.scrollTop > 400 || document.documentElement.scrollTop > 400) {
+        // document.getElementById("navbar-top").style.top = "-80px";
+        $('#left-menu').addClass('left-menu-always-on');
+    } else if (document.body.scrollTop > 80 || document.documentElement.scrollTop > 80) {
+        // document.getElementById("navbar-top").style.top = "0";
+        $('#left-menu').removeClass('left-menu-always-on');
     }
 }
 

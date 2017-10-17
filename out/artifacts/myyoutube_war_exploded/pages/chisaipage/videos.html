@@ -14,7 +14,7 @@
                     </option> -->
                 </select>
             </div>
-           <!--  <div class="row col-md-3 form-group">
+            <!--  <div class="row col-md-3 form-group">
                 <div class="form-check">
                     <label class="form-check-label">
                         <input class="form-check-input" ng-change="switchFn()" ng-model="enableFn" type="checkbox">
@@ -25,30 +25,76 @@
                 </div>
             </div> -->
         </div>
-        <div class="col-md-4 col-lg-4 pr-3 pl-3 pb-3" name="video-block"  ng-repeat="video in videos | filter : videoname">
-            <div class="thumbnail" ng-show="show">
-                <img alt="Preview image" class="card-img-top thumbnail-pre-img" data-holder-rendered="true" ng-src="https://i.ytimg.com/vi/{{video.attributes.youtubeId | limitTo:11}}/hqdefault.jpg">
-                </img>
-                <a class="thumbnail-btn-play" ng-href="./watch.html?v={{video.id}}&yt={{video.attributes.youtubeId}}">
-                </a>
-                <a class="video-name" ng-bind="video.attributes.name" ng-href="./watch.html?v={{video.id}}&yt={{video.attributes.youtubeId}}">
-                </a>
-
-                <!-- Example single danger button -->
-                <div class="btn-group top-right">
-                    <button aria-expanded="false" aria-haspopup="true" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" type="button">
-                        Thao tác
-                        <!-- -->
-                    </button>
-                    <div class="dropdown-menu">             
-                         <button class="dropdown-item" href="" click="editVideo(video.id)"><i class="fa fa-pencil fa-fw" aria-hidden="true"></i> Sửa</button>
-                        <a class="dropdown-item" confirmed-click="deleteVideo(video.id)" ng-confirm-click="Are you sure to delete this record ?">
-                            Xoá
+        <div class="row m-0 p-0">
+            <h4>Video mới</h4>
+            <div class="row p-0 m-0">
+                <div class="col-md-4 col-lg-4 pr-3 pl-3 pb-3" name="video-block" ng-repeat="video in videos | filter : videoname |limitTo : 9">
+                    <div class="thumbnail" ng-show="show">
+                        <img alt="Preview image" class="card-img-top thumbnail-pre-img" data-holder-rendered="true" err-src="https://i.ytimg.com/vi/{{video.attributes.youtubeId | limitTo:11}}/hqdefault.jpg" ng-src="{{video.attributes.thumbnail}">
+                        </img>
+                        <a class="thumbnail-btn-play" ng-href="./watch.html?v={{video.id}}&yt={{video.attributes.youtubeId}}">
                         </a>
+                        <a class="video-name" ng-bind="video.attributes.name" ng-href="./watch.html?v={{video.id}}&yt={{video.attributes.youtubeId}}">
+                        </a>
+                        <!-- Example single danger button -->
+                        <div class="btn-group top-right">
+                            <button aria-expanded="false" aria-haspopup="true" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" type="button">
+                                <!-- -->
+                            </button>
+                            <div class="dropdown-menu dropdown-custom">
+                                <button class="dropdown-item" click="editVideo(video.id)" href="">
+                                    <i aria-hidden="true" class="fa fa-pencil fa-fw">
+                                    </i>
+                                    Sửa
+                                </button>
+                                <button class="dropdown-item" confirmed-click="deleteVideo(video.id)" ng-confirm-click="Are you sure to delete this record ?">
+                                    <i aria-hidden="true" class="fa fa-trash">
+                                    </i>
+                                    Xoá
+                                </button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
+           
         </div>
+        <div class="row m-0 p-0">
+            <h4>Video mới</h4>
+            <div class="row p-0 m-0">
+                <div class="col-md-4 col-lg-4 pr-3 pl-3 pb-3" name="video-block" ng-repeat="video in videos | filter : videoname |limitTo : 9">
+                    <div class="thumbnail" ng-show="show">
+                        <img alt="Preview image" class="card-img-top thumbnail-pre-img" data-holder-rendered="true" err-src="https://i.ytimg.com/vi/{{video.attributes.youtubeId | limitTo:11}}/hqdefault.jpg" ng-src="{{video.attributes.thumbnail}">
+                        </img>
+                        <a class="thumbnail-btn-play" ng-href="./watch.html?v={{video.id}}&yt={{video.attributes.youtubeId}}">
+                        </a>
+                        <a class="video-name" ng-bind="video.attributes.name" ng-href="./watch.html?v={{video.id}}&yt={{video.attributes.youtubeId}}">
+                        </a>
+                        <!-- Example single danger button -->
+                        <div class="btn-group top-right">
+                            <button aria-expanded="false" aria-haspopup="true" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" type="button">
+                                <!-- -->
+                            </button>
+                            <div class="dropdown-menu dropdown-custom">
+                                <button class="dropdown-item" click="editVideo(video.id)" href="">
+                                    <i aria-hidden="true" class="fa fa-pencil fa-fw">
+                                    </i>
+                                    Sửa
+                                </button>
+                                <button class="dropdown-item" confirmed-click="deleteVideo(video.id)" ng-confirm-click="Are you sure to delete this record ?">
+                                    <i aria-hidden="true" class="fa fa-trash">
+                                    </i>
+                                    Xoá
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+           
+        </div>
+         <div class="row">
+            <div class="row"></div></div>
         <div class="col-md-4 col-lg-4 pr-3 pl-3 pb-3" name="video-block" ng-show="!show">
             <div class="thumbnail">
                 <img alt="Preview image" class="card-img-top thumbnail-pre-img" data-holder-rendered="true" src="../assets/img/403.png">

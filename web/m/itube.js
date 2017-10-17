@@ -17,16 +17,19 @@ app.config(function($routeProvider) {
         templateUrl: "chisaipage/videos.html"
     }).when("/home/", {
         templateUrl: "chisaipage/videos.html"
-    }).when("/home/videos", {
+    }).when("/videos", {
         templateUrl: "chisaipage/videos.html"
-    }).when("/home/playlist", {
+    }).when("/playlist", {
         templateUrl: "chisaipage/playlist.html",
-    }).when("/home/upload", {
+    }).when("/upload", {
         templateUrl: "chisaipage/uploadvideo.html"
-    }).when("/home/contact", {
+    }).when("/contact", {
         templateUrl: "chisaipage/contact.html"
-    }).when("/home/sitemap", {
+    }).when("/sitemap", {
         templateUrl: "chisaipage/sitemap.html"
+    })
+    .otherwise({
+        templateUrl: "404.html"
     });
 });
 app.directive('ngConfirmClick', [
@@ -80,6 +83,13 @@ function scrollFunction() {
     } else if (document.body.scrollTop > 80 || document.documentElement.scrollTop > 80) {
         // document.getElementById("navbar-top").style.top = "0";
         $('#navbar-top').removeClass('desktop-scroll-ver');
+    }
+    if (document.body.scrollTop > 400 || document.documentElement.scrollTop > 400) {
+        // document.getElementById("navbar-top").style.top = "-80px";
+        $('#left-menu').addClass('left-menu-always-on');
+    } else if (document.body.scrollTop > 80 || document.documentElement.scrollTop > 80) {
+        // document.getElementById("navbar-top").style.top = "0";
+        $('#left-menu').removeClass('left-menu-always-on');
     }
 }
 
