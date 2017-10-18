@@ -1,104 +1,149 @@
 <div aria-labelledby="v-pills-home" id="v-pills-home" ng-controller="videosCtrl" ng-init="init()" role="tabpanel">
     <!-- content row -->
-    <div class="row" id="page-content">
-        <div class="row col-md-12 form-group " ng-show="show">
-            <div class="col-md-2 text-right">
-                Search:
+    <div class="row p-0" id="page-content">
+        <div class="row col-md-12 form-group" ng-show="show">
+            <div class="col-md-6 input-group">
+                <div class="input-group-addon"><i class="fa fa-search" aria-hidden="true"></i></div>
+                <input class="form-control" ng-model="videoname" placeholder="Search video, playlist" type="text"/>
             </div>
-            <div class="col-md-4">
-                <input class="form-control" ng-model="videoname" type="text"/>
-            </div>
-            <div class="col-md-3" ng-controller="uploadVideoCtrl" ng-init="init()">
-                <select class="custom-select" ng-model="playlist" ng-options="playlist.attributes.name for playlist in playlistsModel">
-                    <!--  <option ng-repeat="playlist in playlistsModel" value="playlist.id">{{playlist.attributes.name}}
-                    </option> -->
-                </select>
-            </div>
-            <!--  <div class="row col-md-3 form-group">
-                <div class="form-check">
-                    <label class="form-check-label">
-                        <input class="form-check-input" ng-change="switchFn()" ng-model="enableFn" type="checkbox">
-                            Thao tác
-                        </input>
-                    </label>
-                    {{enableFn}}
-                </div>
-            </div> -->
         </div>
-        <div class="row m-0 p-0">
-            <h4>Video mới</h4>
-            <div class="row p-0 m-0">
-                <div class="col-md-4 col-lg-4 pr-3 pl-3 pb-3" name="video-block" ng-repeat="video in videos | filter : videoname |limitTo : 9">
+        <div class="row col-md-12 col-xl-12 mb-4" ng-show="videoname">
+            <div class="row col-md-12 rounded box-shadow pt-3" id="search-result">
+                <div class="row col-md-12">
+                    <div class="row col-md-11">
+                        <h4 class="pl-header">
+                            Kết quả tìm kiếm cho:
+                            <small class="text-muted" ng-bind="videoname">
+                            </small>
+                        </h4>
+                        <div class="row col-md-9" ng-show="filterVideos.length">
+                            <span>
+                                Có {{filterVideos.length}} kết quả.
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-lg-4 pr-3 pl-3 pb-3" name="video-block" ng-repeat="video in filterVideos = (videos | filter: videoname)">
                     <div class="thumbnail" ng-show="show">
-                        <img alt="Preview image" class="card-img-top thumbnail-pre-img" data-holder-rendered="true" err-src="https://i.ytimg.com/vi/{{video.attributes.youtubeId | limitTo:11}}/hqdefault.jpg" ng-src="{{video.attributes.thumbnail}">
-                        </img>
-                        <a class="thumbnail-btn-play" ng-href="./watch.html?v={{video.id}}&yt={{video.attributes.youtubeId}}">
-                        </a>
-                        <a class="video-name" ng-bind="video.attributes.name" ng-href="./watch.html?v={{video.id}}&yt={{video.attributes.youtubeId}}">
-                        </a>
-                        <!-- Example single danger button -->
-                        <div class="btn-group top-right">
-                            <button aria-expanded="false" aria-haspopup="true" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" type="button">
-                                <!-- -->
-                            </button>
-                            <div class="dropdown-menu dropdown-custom">
-                                <button class="dropdown-item" click="editVideo(video.id)" href="">
-                                    <i aria-hidden="true" class="fa fa-pencil fa-fw">
-                                    </i>
-                                    Sửa
+                        <div ng-if="video">
+                            <img alt="Preview image" class="card-img-top thumbnail-pre-img" data-holder-rendered="true" err-src="https://i.ytimg.com/vi/{{video.attributes.youtubeId | limitTo:11}}/hqdefault.jpg" ng-src="video.attributes.thumbnail">
+                            </img>
+                            <a class="thumbnail-btn-play" ng-href="./watch.html?v={{video.id}}&yt={{video.attributes.youtubeId}}">
+                            </a>
+                            <a class="video-name" ng-bind="video.attributes.name" ng-href="./watch.html?v={{video.id}}&yt={{video.attributes.youtubeId}}">
+                            </a>
+                            <!-- Example single danger button -->
+                            <div class="btn-group top-right">
+                                <button aria-expanded="false" aria-haspopup="true" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" type="button">
+                                    <!-- -->
                                 </button>
-                                <button class="dropdown-item" confirmed-click="deleteVideo(video.id)" ng-confirm-click="Are you sure to delete this record ?">
-                                    <i aria-hidden="true" class="fa fa-trash">
-                                    </i>
-                                    Xoá
+                                <div class="dropdown-menu dropdown-custom">
+                                    <button class="dropdown-item" click="editVideo(video.id)" href="">
+                                        <i aria-hidden="true" class="fa fa-pencil fa-fw">
+                                        </i>
+                                        Sửa
+                                    </button>
+                                    <button class="dropdown-item" confirmed-click="deleteVideo(video.id)" ng-confirm-click="Are you sure to delete this record ?">
+                                        <i aria-hidden="true" class="fa fa-trash">
+                                        </i>
+                                        Xoá
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row col-md-10" ng-hide="filterVideos.length">
+                    <h5 class="text-muted">
+                        Xin lỗi! không tìm thấy video nào phù hợp
+                    </h5>
+                </div>
+            </div>
+        </div>
+        <div class="row col-md-12 col-xl-12 " ng-show="!videoname && show">
+            <div class="row col-md-12 m-0 mb-4 rounded box-shadow pt-3">
+                <div class="row col-md-12">
+                    <h4 class="text-capitalize pl-header">
+                        video mới &nbsp;<h5><sup class="badge badge-primary">New</sup></h5>
+                    </h4>
+                </div>
+                <div class="row">
+                    <div class="col-md-4 col-lg-4 col-xl-4 pr-3 pl-3 pb-3" name="video-block" ng-repeat="video in videos | limitTo : 3">
+                        
+                        <div class="thumbnail" ng-show="show">
+                            <img alt="Preview image" class="card-img-top thumbnail-pre-img" data-holder-rendered="true" err-src="https://i.ytimg.com/vi/{{video.attributes.youtubeId | limitTo:11}}/hqdefault.jpg" ng-src="video.attributes.thumbnail">
+                            </img>
+                            <a class="thumbnail-btn-play" ng-href="./watch.html?v={{video.id}}&yt={{video.attributes.youtubeId}}">
+                            </a>
+                            <a class="video-name" ng-bind="video.attributes.name" ng-href="./watch.html?v={{video.id}}&yt={{video.attributes.youtubeId}}">
+                            </a>
+                            <!-- Example single danger button -->
+                            <div class="btn-group top-right">
+                                <button aria-expanded="false" aria-haspopup="true" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" type="button">
+                                    <!-- -->
                                 </button>
+                                <div class="dropdown-menu dropdown-custom">
+                                    <button class="dropdown-item" click="editVideo(video.id)" href="">
+                                        <i aria-hidden="true" class="fa fa-pencil fa-fw">
+                                        </i>
+                                        Sửa
+                                    </button>
+                                    <button class="dropdown-item" confirmed-click="deleteVideo(video.id)" ng-confirm-click="Are you sure to delete this record ?">
+                                        <i aria-hidden="true" class="fa fa-trash">
+                                        </i>
+                                        Xoá
+                                    </button>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-           
         </div>
-        <div class="row m-0 p-0">
-            <h4>Video mới</h4>
-            <div class="row p-0 m-0">
-                <div class="col-md-4 col-lg-4 pr-3 pl-3 pb-3" name="video-block" ng-repeat="video in videos | filter : videoname |limitTo : 9">
-                    <div class="thumbnail" ng-show="show">
-                        <img alt="Preview image" class="card-img-top thumbnail-pre-img" data-holder-rendered="true" err-src="https://i.ytimg.com/vi/{{video.attributes.youtubeId | limitTo:11}}/hqdefault.jpg" ng-src="{{video.attributes.thumbnail}">
-                        </img>
-                        <a class="thumbnail-btn-play" ng-href="./watch.html?v={{video.id}}&yt={{video.attributes.youtubeId}}">
-                        </a>
-                        <a class="video-name" ng-bind="video.attributes.name" ng-href="./watch.html?v={{video.id}}&yt={{video.attributes.youtubeId}}">
-                        </a>
-                        <!-- Example single danger button -->
-                        <div class="btn-group top-right">
-                            <button aria-expanded="false" aria-haspopup="true" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" type="button">
-                                <!-- -->
-                            </button>
-                            <div class="dropdown-menu dropdown-custom">
-                                <button class="dropdown-item" click="editVideo(video.id)" href="">
-                                    <i aria-hidden="true" class="fa fa-pencil fa-fw">
-                                    </i>
-                                    Sửa
+        <div class="col-md-12 col-xl-12" ng-controller="playlistCtrl" ng-init="init()" ng-show="!videoname && show">
+            <div class="row m-0 p-0 mb-4 col-md-12" ng-repeat="playlist in playlists | limitTo : 6">
+                <div class="row col-md-12 rounded box-shadow pt-3">
+                    <div class="row col-md-12">
+                        <h4 class="text-capitalize pl-header" ng-bind="playlist.attributes.name">
+                        </h4>
+                    </div>
+                    <div class="col-md-4 col-lg-4 col-xl-4 pr-3 pl-3 pb-3" name="video-block" ng-repeat="video in videos | filter : playlist.id | limitTo: 6">
+                        <div class="thumbnail" ><!--ng-show="show"-->
+                            <img alt="Preview image" class="card-img-top thumbnail-pre-img" data-holder-rendered="true" err-src="https://i.ytimg.com/vi/{{video.attributes.youtubeId | limitTo:11}}/hqdefault.jpg" ng-src="{{video.attributes.thumbnail}">
+                            </img>
+                            <a class="thumbnail-btn-play" ng-href="./watch.html?v={{video.id}}&yt={{video.attributes.youtubeId}}">
+                            </a>
+                            <a class="video-name" ng-bind="video.attributes.name" ng-href="./watch.html?v={{video.id}}&yt={{video.attributes.youtubeId}}">
+                            </a>
+                            <!-- Example single danger button -->
+                            <div class="btn-group top-right">
+                                <button aria-expanded="false" aria-haspopup="true" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" type="button">
+                                    <!-- -->
                                 </button>
-                                <button class="dropdown-item" confirmed-click="deleteVideo(video.id)" ng-confirm-click="Are you sure to delete this record ?">
-                                    <i aria-hidden="true" class="fa fa-trash">
-                                    </i>
-                                    Xoá
-                                </button>
+                                <div class="dropdown-menu dropdown-custom">
+                                    <button class="dropdown-item" click="editVideo(video.id)" href="">
+                                        <i aria-hidden="true" class="fa fa-pencil fa-fw">
+                                        </i>
+                                        Sửa
+                                    </button>
+                                    <button class="dropdown-item" confirmed-click="deleteVideo(video.id)" ng-confirm-click="Are you sure to delete this record ?">
+                                        <i aria-hidden="true" class="fa fa-trash">
+                                        </i>
+                                        Xoá
+                                    </button>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-           
+            </div>          
+        
         </div>
-         <div class="row">
-            <div class="row"></div></div>
-        <div class="col-md-4 col-lg-4 pr-3 pl-3 pb-3" name="video-block" ng-show="!show">
+        
+        <div class="col-md-4 col-lg-4 p-4"  ng-show="!show">
             <div class="thumbnail">
                 <img alt="Preview image" class="card-img-top thumbnail-pre-img" data-holder-rendered="true" src="../assets/img/403.png">
-                    <strong class="video-name text-center">
+                    <strong class=" text-center">
                         Truy cập bị từ chối, hãy
                         <a href="login.html" style="text-decoration: underline;">
                             đăng nhập

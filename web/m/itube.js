@@ -94,7 +94,7 @@ function scrollFunction() {
 }
 
 function isValidURL(url) {
-    var expression = /^(?:https?:\/\/)?(?:www|m\.)?youtube\.com\/watch\?(?=.*v=((\w|-){11}))(?:\S+)?$/;
+    var expression = /^(?:https?:\/\/)?(?:www\.)?youtube\.com\/watch\?(?=.*v=((\w|-){11}))(?:\S+)?$/;
     var regex = new RegExp(expression);
     if (url.match(regex)) {
         return true;

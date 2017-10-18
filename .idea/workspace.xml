@@ -7,11 +7,27 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f3f184aa-b58d-4b55-93da-f57cda36d924" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/myyoutube_war_exploded/assets/css/customize.css" afterPath="$PROJECT_DIR$/out/artifacts/myyoutube_war_exploded/assets/css/customize.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/myyoutube_war_exploded/c/itubeCtrl.js" afterPath="$PROJECT_DIR$/out/artifacts/myyoutube_war_exploded/c/itubeCtrl.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/myyoutube_war_exploded/m/itube.js" afterPath="$PROJECT_DIR$/out/artifacts/myyoutube_war_exploded/m/itube.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/myyoutube_war_exploded/pages/chisaipage/playlist.html" afterPath="$PROJECT_DIR$/out/artifacts/myyoutube_war_exploded/pages/chisaipage/playlist.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/myyoutube_war_exploded/pages/chisaipage/uploadvideo.html" afterPath="$PROJECT_DIR$/out/artifacts/myyoutube_war_exploded/pages/chisaipage/uploadvideo.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/myyoutube_war_exploded/pages/chisaipage/videos.html" afterPath="$PROJECT_DIR$/out/artifacts/myyoutube_war_exploded/pages/chisaipage/videos.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/myyoutube_war_exploded/pages/index.html" afterPath="$PROJECT_DIR$/out/artifacts/myyoutube_war_exploded/pages/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/myyoutube_war_exploded/pages/watch.html" afterPath="$PROJECT_DIR$/out/artifacts/myyoutube_war_exploded/pages/watch.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/assets/css/customize.css" afterPath="$PROJECT_DIR$/web/assets/css/customize.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/c/itubeCtrl.js" afterPath="$PROJECT_DIR$/web/c/itubeCtrl.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/m/itube.js" afterPath="$PROJECT_DIR$/web/m/itube.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/pages/chisaipage/contact.html" afterPath="$PROJECT_DIR$/web/pages/chisaipage/contact.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/pages/chisaipage/playlist.html" afterPath="$PROJECT_DIR$/web/pages/chisaipage/playlist.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/pages/chisaipage/sitemap.html" afterPath="$PROJECT_DIR$/web/pages/chisaipage/sitemap.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/pages/chisaipage/uploadvideo.html" afterPath="$PROJECT_DIR$/web/pages/chisaipage/uploadvideo.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/pages/chisaipage/videos.html" afterPath="$PROJECT_DIR$/web/pages/chisaipage/videos.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/pages/index.html" afterPath="$PROJECT_DIR$/web/pages/index.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/pages/navbar.html" afterPath="$PROJECT_DIR$/web/pages/navbar.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/pages/reg.html" afterPath="$PROJECT_DIR$/web/pages/reg.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/pages/watch.html" afterPath="$PROJECT_DIR$/web/pages/watch.html" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -20,6 +36,9 @@
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -56,8 +75,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -80,7 +98,8 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scratches" />
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -240,15 +259,17 @@
       <workItem from="1507994368475" duration="505000" />
       <workItem from="1508041818351" duration="883000" />
       <workItem from="1508078472251" duration="1419000" />
-      <workItem from="1508164138358" duration="4101000" />
+      <workItem from="1508164138358" duration="4708000" />
+      <workItem from="1508256760719" duration="785000" />
+      <workItem from="1508289121322" duration="2299000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="7351000" />
+    <option name="totallyTimeSpent" value="11042000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="48" y="23" width="1396" height="877" extended-state="6" />
+    <frame x="47" y="23" width="1393" height="877" extended-state="6" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -262,7 +283,7 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24856733" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24838477" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -287,6 +308,16 @@
   <component name="XDebuggerManager">
     <breakpoint-manager />
     <watches-manager />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/web/pages/navbar.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="14" column="40" lean-forward="true" selection-start-line="14" selection-start-column="40" selection-end-line="14" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
   </component>
   <component name="masterDetails">
     <states>

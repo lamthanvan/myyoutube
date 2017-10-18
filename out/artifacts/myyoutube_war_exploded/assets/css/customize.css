@@ -1,16 +1,22 @@
-/*
-*LOADING 2
-*/
+
 
 .no-border {
     border: none;
 }
+.round-border{  
+   border-radius: 0.5rem;
 
+}
+.box-shadow{
+    box-shadow: 5px 5px 10px #6C6C6C;
+}
 .bg-itube-default {
     background-color: #141414;
     color: #fff;
 }
-
+.bg-itube-white{
+    background: white;
+}
 .bg-itube-softdark {
     background-color: #6C6B6B;
     color: #fff;
@@ -50,135 +56,39 @@ background-size:16px 16px;
     display: none;
 }
 
-.cssload-loader {
-    width: 244px;
-    height: 49px;
-    line-height: 49px;
-    text-align: center;
+.playlist-detail{
     position: absolute;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    -o-transform: translate(-50%, -50%);
-    -ms-transform: translate(-50%, -50%);
-    -webkit-transform: translate(-50%, -50%);
-    -moz-transform: translate(-50%, -50%);
-    font-family: helvetica, arial, sans-serif;
-    text-transform: uppercase;
-    font-weight: 900;
-    font-size: 18px;
-    color: rgb(206, 66, 51);
-    letter-spacing: 0.2em;
-    z-index: 10;
+    transition: 2s;
+    display: none;
+    background: #7F007F
+    bottom:0;
+    width: 100%;
 }
-
-.cssload-loader::before, .cssload-loader::after {
-    content: "";
+.toPopup{
+    transition: 2s;
+   
+    top:0rem;
+    min-height: 100%;
+    z-index: 500;
     display: block;
-    width: 15px;
-    height: 15px;
-    background: rgb(206, 66, 51);
-    position: absolute;
-    animation: cssload-load 0.81s infinite alternate ease-in-out;
-    -o-animation: cssload-load 0.81s infinite alternate ease-in-out;
-    -ms-animation: cssload-load 0.81s infinite alternate ease-in-out;
-    -webkit-animation: cssload-load 0.81s infinite alternate ease-in-out;
-    -moz-animation: cssload-load 0.81s infinite alternate ease-in-out;
 }
-
-.cssload-loader::before {
-    top: 0;
+.my-toggle-btn{
+    width: 4rem;
 }
-
-.cssload-loader::after {
-    bottom: 0;
+a.back-link{
+    text-decoration: none;
+    color: #7F007F
 }
+a.back-link:hover{
+    text-decoration: none;
+    color: #FF7F00;
 
-@keyframes cssload-load {
-    0% {
-        left: 0;
-        height: 29px;
-        width: 15px;
-    }
-    50% {
-        height: 8px;
-        width: 39px;
-    }
-    100% {
-        left: 229px;
-        height: 29px;
-        width: 15px;
-    }
 }
-
-@-o-keyframes cssload-load {
-    0% {
-        left: 0;
-        height: 29px;
-        width: 15px;
-    }
-    50% {
-        height: 8px;
-        width: 39px;
-    }
-    100% {
-        left: 229px;
-        height: 29px;
-        width: 15px;
-    }
+p.description{
+white-space: pre-wrap;
+/*word-break: break-all;*/
+word-wrap: break-word;
 }
-
-@-ms-keyframes cssload-load {
-    0% {
-        left: 0;
-        height: 29px;
-        width: 15px;
-    }
-    50% {
-        height: 8px;
-        width: 39px;
-    }
-    100% {
-        left: 229px;
-        height: 29px;
-        width: 15px;
-    }
-}
-
-@-webkit-keyframes cssload-load {
-    0% {
-        left: 0;
-        height: 29px;
-        width: 15px;
-    }
-    50% {
-        height: 8px;
-        width: 39px;
-    }
-    100% {
-        left: 229px;
-        height: 29px;
-        width: 15px;
-    }
-}
-
-@-moz-keyframes cssload-load {
-    0% {
-        left: 0;
-        height: 29px;
-        width: 15px;
-    }
-    50% {
-        height: 8px;
-        width: 39px;
-    }
-    100% {
-        left: 229px;
-        height: 29px;
-        width: 15px;
-    }
-}
-
-
 /*
 * CSS loader 3
 */
@@ -438,8 +348,10 @@ background-size:16px 16px;
     height: 5em;
     overflow-y: hidden;
 }
+.video-name:hover{
+    color: #7F007F;
 
-
+}
 /*
 *Thumbnail video modal
 */
@@ -607,8 +519,14 @@ a.pl-thumb-goto{
 }
 .img-thumbnail-custom{
     height: 10rem;
-    
+    width:100%;
   
+}
+.pl-header{
+    color: #563d7c;
+}
+a.purple-link{
+     color: #563d7c;
 }
 .playlist-body {
     display: inline-block;
@@ -629,7 +547,7 @@ a.pl-thumb-goto{
 .top-right {
     position: absolute;
     top: 0;
-    right: 1rem;
+    right: 0.9rem;
     cursor: pointer;
     
 }
@@ -664,6 +582,9 @@ a.pl-thumb-goto{
     position: fixed;
     top: 2rem;
    
+}
+#search-result{
+    min-height: 30rem;
 }
 /*smartphone*/
 

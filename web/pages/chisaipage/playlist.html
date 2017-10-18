@@ -8,10 +8,9 @@
                 <a class="nav-item nav-link" ng-class="{'active': tabName ==='new-playlist'}" ng-click="switchTab('new-playlist')">
                     New playlist
                 </a>
-                
             </nav>
         </div>
-        <div class="col-md-12" ng-switch="tabName">
+        <div class="row col-md-12" ng-switch="tabName" style="min-height: 50rem">
             <div class="col-md-12 " ng-switch-when="playlist">
                 <div class="row col-md-12 mt-3">
                     <nav class="col-md-12" ng-show="totalPage">
@@ -59,8 +58,8 @@
                             </p>
                             <div class="col-md-12 text-right">
                                 <i aria-hidden="true" class="fa fa-info-circle ">
-                                </i>                              
-                                <a class="btn-link purple-link" ng-click="showPlDetail(playlist.id)">
+                                </i>
+                                <a class="btn-link purple-link" ng-click="setSelectedPl(playlist);showPlDetail(playlist.id)">
                                     Xem playlist
                                 </a>
                             </div>
@@ -128,7 +127,7 @@
                     <!-- {{totalPage}} -->
                 </div>
             </div>
-            <div ng-switch-when="new-playlist">
+            <div ng-switch-when="new-playlist" class="row col-md-12">
                 <div class="row pt-3 col-md-12 col-lg-12">
                     <div class="col-md-1">
                     </div>
@@ -188,21 +187,83 @@
                     </div>
                 </div>
             </div>
-            <div ng-switch-when="playlist-detail">
-                detail
+        </div>
+    </div>
+    <!-- Playlist detail -->
+    <div class="bg-itube-light playlist-detail mt-3" ng-class="{'toPopup':showDetail}" ng-show="show">
+        <div class="col-md-12">
+            <h5>
+                <i aria-hidden="true" class="fa fa-arrow-circle-left">
+                </i>
+                <a class="btn-link back-link" href="" ng-click="showDetail=false">
+                    Quay lại
+                </a>
+            </h5>
+        </div>
+        <div class="row col-md-12">
+            <div class="col-md-4">
+                <img alt="playlist thumbnail" class="img-thumbnail img-thumbnail-custom no-border" err-src="../assets/img/error404-1.png" ng-src="{{selectedPlaylist.attributes.thumbnailUrl}}"/>
+            </div>
+            <div class="col-md-7 mb-5">
+                <h4>
+                    Thông tin playlist
+                </h4>
+                <h5 class="card-title pt-3" ng-bind="selectedPlaylist.attributes.name">
+                </h5>
+                <p class="card-text" ng-bind="selectedPlaylist.attributes.description">
+                </p>
+            </div>
+        </div>
+        <div class="row col-md-12 mt-3" ng-controller="videosCtrl">
+            <div class="col-md-4 col-lg-4 col-xl-4 pr-3 pl-3 pb-3" name="video-block" ng-repeat="video in videosByPlId">
+                <div class="thumbnail">
+                    <!--ng-show="show"-->
+                    <img alt="Preview image" class="card-img-top thumbnail-pre-img" data-holder-rendered="true" err-src="https://i.ytimg.com/vi/{{video.attributes.youtubeId | limitTo:11}}/hqdefault.jpg" ng-src="{{video.attributes.thumbnail}">
+                    </img>
+                    <a class="thumbnail-btn-play" ng-href="./watch.html?v={{video.id}}&yt={{video.attributes.youtubeId}}">
+                    </a>
+                    <a class="video-name" ng-bind="video.attributes.name" ng-href="./watch.html?v={{video.id}}&yt={{video.attributes.youtubeId}}">
+                    </a>
+                    <!-- Example single danger button -->
+                    <div class="btn-group top-right">
+                        <button aria-expanded="false" aria-haspopup="true" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" type="button">
+                            <!-- -->
+                        </button>
+                        <div class="dropdown-menu dropdown-custom">
+                            <button class="dropdown-item" click="editVideo(video.id)" href="">
+                                <i aria-hidden="true" class="fa fa-pencil fa-fw">
+                                </i>
+                                Sửa
+                            </button>
+                            <button class="dropdown-item" confirmed-click="deleteVideo(video.id)" ng-confirm-click="Are you sure to delete this record ?">
+                                <i aria-hidden="true" class="fa fa-trash">
+                                </i>
+                                Xoá
+                            </button>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-    <div class="col-md-4 col-lg-4 pr-3 pl-3 pb-3" name="video-block" ng-show="!show">
-            <div class="thumbnail">
-                <img alt="Preview image" class="card-img-top thumbnail-pre-img" data-holder-rendered="true" src="../assets/img/403.png">
-                    <strong class="video-name text-center">
-                        Truy cập bị từ chối, hãy
-                        <a href="login.html" style="text-decoration: underline;">
-                            đăng nhập
-                        </a>
-                    </strong>
-                </img>
+    <!-- Large modal -->
+    <!--  <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+              ...
             </div>
+          </div>
+        </div> -->
+    <div class="col-md-4 col-lg-4 pr-3 pl-3 pb-3" name="video-block" ng-show="!show">
+        <div class="thumbnail">
+            <img alt="Preview image" class="card-img-top thumbnail-pre-img" data-holder-rendered="true" src="../assets/img/403.png">
+                <strong class=" text-center">
+                    Truy cập bị từ chối, hãy
+                    <a href="login.html" style="text-decoration: underline;">
+                        đăng nhập
+                    </a>
+                </strong>
+            </img>
         </div>
+    </div>
 </div>

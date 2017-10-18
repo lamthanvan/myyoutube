@@ -17,18 +17,19 @@ app.config(function($routeProvider) {
         templateUrl: "chisaipage/videos.html"
     }).when("/home/", {
         templateUrl: "chisaipage/videos.html"
-    }).when("/home/videos", {
+    }).when("/videos", {
         templateUrl: "chisaipage/videos.html"
-    }).when("/home/playlist", {
+    }).when("/playlist", {
         templateUrl: "chisaipage/playlist.html",
-    }).when("/home/upload", {
+    }).when("/upload", {
         templateUrl: "chisaipage/uploadvideo.html"
-    }).when("/home/contact", {
+    }).when("/contact", {
         templateUrl: "chisaipage/contact.html"
-    }).when("/home/sitemap", {
+    }).when("/sitemap", {
         templateUrl: "chisaipage/sitemap.html"
-    }).otherwhise({
-        redirectTo: '/'
+    })
+    .otherwise({
+        templateUrl: "404.html"
     });
 });
 app.directive('ngConfirmClick', [
@@ -93,7 +94,7 @@ function scrollFunction() {
 }
 
 function isValidURL(url) {
-    var expression = /^(?:https?:\/\/)?(?:www|m\.)?youtube\.com\/watch\?(?=.*v=((\w|-){11}))(?:\S+)?$/;
+    var expression = /^(?:https?:\/\/)?(?:www\.)?youtube\.com\/watch\?(?=.*v=((\w|-){11}))(?:\S+)?$/;
     var regex = new RegExp(expression);
     if (url.match(regex)) {
         return true;

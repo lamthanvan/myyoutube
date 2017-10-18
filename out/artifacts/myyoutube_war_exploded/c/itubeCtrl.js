@@ -18,10 +18,12 @@ app.controller('videosCtrl', function($scope, $http) {
     // });
     $scope.enableFn = false;
     $scope.show = false;
+
     if (hasRole()) {
         $scope.show = true;
         $scope.videos;
         $scope.init = function() {
+
             $scope.video = {};
             $scope.getListVideoService();
             if (typeof(Storage) !== "undefined") {
@@ -34,6 +36,7 @@ app.controller('videosCtrl', function($scope, $http) {
                 alert('Your browser is not support! Please upgare newest version.')
             }
         }
+
         $scope.switchFn = function() {
             localStorage.setItem("enableFn", $scope.enableFn);
             console.log("enable now: " + $scope.enableFn);
@@ -175,6 +178,8 @@ app.controller('playlistCtrl', function playlistCtrl($scope, $http, $window) {
         $scope.show = true;
         $scope.tabName;
         $scope.playlists;
+        $scope.videosByPlId;
+        $scope.selectedPlaylist;
         $scope.meta;
         $scope.page;
         $scope.limit;
@@ -182,8 +187,8 @@ app.controller('playlistCtrl', function playlistCtrl($scope, $http, $window) {
         $scope.init = function() {
             // console.log(localStorage.getItem("tokenKey"));
             $scope.currentPage = 1;
-            $scope.limit = 12;
-            $scope.getPlaylistService($scope, $http);
+            $scope.limit = 6;
+            $scope.getPlaylistService();
             $scope.totalPage;
             $scope.tabName = 'playlist';
             $scope.dataToSend = {
@@ -196,6 +201,32 @@ app.controller('playlistCtrl', function playlistCtrl($scope, $http, $window) {
                     }
                 }
             }
+        }
+        $scope.showPlDetail = function(playlistId){
+            console.log(playlistId);
+            $scope.getVideosByPlId(playlistId);
+            $scope.showDetail = true;
+           
+        }
+        $scope.setSelectedPl = function(playlist){
+            $scope.selectedPlaylist = playlist;
+        }
+        $scope.getVideosByPlId = function(playlistId){
+            
+            $http({
+                method: 'GET',
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": localStorage.getItem("tokenKey")
+                },
+                url: VIDEO_API_URL + '?playlist=' + playlistId
+            }).then(function successCallback(response) {
+                // console.log(VIDEO_API_URL + '?playlist=' + playlistId)
+                // console.log(response)
+                $scope.videosByPlId = response.data.data;
+                console.log(response)
+            }, function errorCallback(response) {});
+           
         }
         $scope.pagination = function(comand) {
             if (comand === 'minus') {
@@ -222,7 +253,7 @@ app.controller('playlistCtrl', function playlistCtrl($scope, $http, $window) {
         $scope.switchTab = function(tabName) {
             this.tabName = tabName;
         }
-        $scope.getPlaylistService = function($scope, $http) {
+        $scope.getPlaylistService = function() {
             // console.log("Tokenkey: "+localStorage.getItem("tokenKey"));
             $http({
                 method: 'GET',
@@ -270,11 +301,10 @@ app.controller('playlistCtrl', function playlistCtrl($scope, $http, $window) {
         // alert('Bạn cần đăng nhập để truy cập vào tính năng này!');
         $scope.show = false;
         // $window.location.href = 'index.html';
-      
     }
 });
 app.controller('uploadVideoCtrl', function($scope, $http) {
-    $scope.show=false;
+    $scope.show = false;
     if (hasRole()) {
         $scope.show = true;
         $scope.ytURL;
@@ -460,7 +490,7 @@ app.controller('uploadVideoCtrl', function($scope, $http) {
             })
         }
     } else {
-        $scope.show = false; 
+        $scope.show = false;
     }
 });
 
@@ -480,7 +510,6 @@ function hasRole() {
 function getLink($scope) {
     alert(videoToUpload.videoId)
 }
-
 
 function submitForm($scope) {}
 

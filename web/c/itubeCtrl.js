@@ -36,6 +36,7 @@ app.controller('videosCtrl', function($scope, $http) {
                 alert('Your browser is not support! Please upgare newest version.')
             }
         }
+
         $scope.switchFn = function() {
             localStorage.setItem("enableFn", $scope.enableFn);
             console.log("enable now: " + $scope.enableFn);
@@ -177,6 +178,8 @@ app.controller('playlistCtrl', function playlistCtrl($scope, $http, $window) {
         $scope.show = true;
         $scope.tabName;
         $scope.playlists;
+        $scope.videosByPlId;
+        $scope.selectedPlaylist;
         $scope.meta;
         $scope.page;
         $scope.limit;
@@ -201,16 +204,29 @@ app.controller('playlistCtrl', function playlistCtrl($scope, $http, $window) {
         }
         $scope.showPlDetail = function(playlistId){
             console.log(playlistId);
-             $http({
+            $scope.getVideosByPlId(playlistId);
+            $scope.showDetail = true;
+           
+        }
+        $scope.setSelectedPl = function(playlist){
+            $scope.selectedPlaylist = playlist;
+        }
+        $scope.getVideosByPlId = function(playlistId){
+            
+            $http({
                 method: 'GET',
                 headers: {
                     "Content-Type": "application/json",
                     "Authorization": localStorage.getItem("tokenKey")
                 },
-                url: VIDEO_API_URL + '?playlistId=' + playlistId
+                url: VIDEO_API_URL + '?playlist=' + playlistId
             }).then(function successCallback(response) {
+                // console.log(VIDEO_API_URL + '?playlist=' + playlistId)
+                // console.log(response)
+                $scope.videosByPlId = response.data.data;
                 console.log(response)
             }, function errorCallback(response) {});
+           
         }
         $scope.pagination = function(comand) {
             if (comand === 'minus') {
